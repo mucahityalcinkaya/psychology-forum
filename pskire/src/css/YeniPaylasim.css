@@ -1,0 +1,144 @@
+/* ========================================
+   YENİ PAYLAŞIM CSS - Modern Tasarım
+   ======================================== */
+
+/* Ana Container */
+.yeni-paylasim-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f3ff 0%, #e8e5f5 100%);
+    padding: 40px 0;
+}
+
+/* Sayfa Başlığı */
+.page-title {
+    color: #2d3436;
+    font-weight: 700;
+    font-size: 2rem !important;
+    margin-bottom: 30px !important;
+}
+
+/* Ana Kartlar */
+.paylasim-card {
+    background: white !important;
+    border: none !important;
+    border-radius: 20px !important;
+    box-shadow: 0 10px 40px rgba(108, 92, 231, 0.08) !important;
+    margin-bottom: 2rem !important;
+    animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.paylasim-card .card-header {
+    background: linear-gradient(135deg, #f8f7ff 0%, #f0edff 100%);
+    border-bottom: 1px solid rgba(108, 92, 231, 0.1);
+    font-weight: 600;
+    color: #6c5ce7;
+}
+
+/* Form Elemanları */
+.form-label {
+    color: #2d3436 !important;
+    font-weight: 600 !important;
+    margin-bottom: 10px !important;
+}
+
+.custom-input, .custom-textarea {
+    border: 2px solid #e8e5f5 !important;
+    border-radius: 12px !important;
+    padding: 12px 16px !important;
+    transition: all 0.3s ease !important;
+    background: #fafafe !important;
+}
+
+.custom-input:focus, .custom-textarea:focus {
+    border-color: #6c5ce7 !important;
+    box-shadow: 0 0 0 0.2rem rgba(108, 92, 231, 0.1) !important;
+    background: white !important;
+}
+
+/* İlaç/Yan Etki Ekleme Alanı */
+.ekleme-grubu {
+    display: flex !important;
+    gap: 10px !important;
+}
+.ekleme-grubu .form-select, .ekleme-grubu .form-control {
+    border-radius: 12px !important;
+    border-color: #e8e5f5;
+}
+.ekleme-grubu .btn {
+    border-radius: 12px !important;
+}
+
+
+/* Seçilen İlaç/Yan Etki Listesi */
+.secilen-liste {
+    padding-left: 0;
+    list-style: none;
+}
+.secilen-liste-item {
+    background-color: #f8f7ff;
+    border: 1px solid #e8e5f5;
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    animation: popIn 0.3s ease;
+}
+@keyframes popIn {
+    0% { transform: scale(0.8); opacity: 0;}
+    100% { transform: scale(1); opacity: 1;}
+}
+
+
+/* Anonim Switch Alanı */
+.anonymous-switch-container {
+    background: linear-gradient(135deg, #fff9e6 0%, #fff5d6 100%) !important;
+    border: 2px solid #ffd93d !important;
+    border-radius: 15px !important;
+    padding: 1rem 1.5rem !important;
+}
+
+.form-check.form-switch {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Switch ile yazı arasında boşluk */
+}
+
+.form-check-input {
+    width: 44px !important;
+    height: 24px !important;
+    margin-left: 0 !important;
+    background-color: #dfe6e9 !important;
+    border: none !important;
+    cursor: pointer !important;
+    flex-shrink: 0;
+}
+.form-check-input:checked {
+    background-color: #6c5ce7 !important;
+}
+.anonymous-label strong {
+    font-weight: 600;
+}
+.anonymous-label .form-text {
+    font-size: 0.85rem;
+}
+
+
+/* Gönder Butonu */
+.submit-btn {
+    background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 15px !important;
+    padding: 16px 40px !important;
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+}
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(108, 92, 231, 0.4) !important;
+}

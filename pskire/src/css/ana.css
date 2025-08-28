@@ -1,0 +1,238 @@
+/* ===================================
+   ANA AKIŞ (MAIN) CSS STİLLERİ
+   ana.css
+   =================================== */
+
+/* Feed Kartları */
+.feed-card {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation: fadeInUp 0.5s ease-out;
+  animation-fill-mode: both;
+}
+
+.feed-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Avatar Circle */
+.avatar-circle {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Animasyonlar */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Filtre Butonları */
+.btn-group .btn {
+  transition: all 0.3s ease;
+}
+
+.btn-group .btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Gradient Arka Plan */
+.bg-gradient-purple {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Başlık Kartı */
+.header-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 1rem !important;
+}
+
+/* Badge Özelleştirmeleri */
+.badge.rounded-pill {
+  font-weight: 400;
+  font-size: 0.875rem;
+}
+
+/* İçerik Önizleme */
+.card-text {
+  line-height: 1.6;
+  color: #6c757d;
+}
+
+/* Hover Link Efekti */
+a.text-decoration-none {
+  transition: all 0.2s ease;
+}
+
+/* Spinner Özelleştirmeleri */
+.spinner-border-lg {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Hoş Geldin Kartı */
+.welcome-card {
+  border-radius: 1.5rem !important;
+  overflow: hidden;
+}
+
+.welcome-stats {
+  padding-top: 2rem;
+  border-top: 1px solid #dee2e6;
+}
+
+.welcome-stats h3 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* Boş Akış Durumu */
+.empty-feed-card {
+  border-radius: 1.5rem !important;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-feed-icon {
+  font-size: 5rem;
+  opacity: 0.5;
+}
+
+/* Buton Stilleri */
+.btn.rounded-pill {
+  border-radius: 50rem !important;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.btn-lg {
+  padding: 0.75rem 2rem;
+}
+
+/* Sıralı Animasyon */
+.col-12[style*="animation-delay"] {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* Alt Bilgi Alanı */
+.border-top {
+  border-color: #e9ecef !important;
+}
+
+/* Küçük Metin */
+.small {
+  font-size: 0.875rem;
+}
+
+/* İkon Boyutları */
+.bi {
+  vertical-align: middle;
+}
+
+.display-1 {
+  font-size: 5rem;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+  .header-card .h2 {
+    font-size: 1.5rem;
+  }
+  
+  .header-card .fs-1 {
+    font-size: 2rem !important;
+  }
+  
+  .avatar-circle {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+  
+  .btn-group {
+    flex-direction: column;
+  }
+  
+  .btn-group .btn {
+    width: 100%;
+    border-radius: 0.5rem !important;
+    margin-bottom: 0.5rem;
+  }
+  
+  .welcome-stats .col-4 {
+    margin-bottom: 1rem;
+  }
+  
+  .empty-feed-icon {
+    font-size: 3rem;
+  }
+  
+  .display-5 {
+    font-size: 2rem !important;
+  }
+}
+
+/* Tablet Görünümü */
+@media (min-width: 768px) and (max-width: 992px) {
+  .header-card .h2 {
+    font-size: 1.75rem;
+  }
+  
+  .feed-card {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Hover Durumu İyileştirmeleri */
+@media (hover: hover) {
+  .feed-card:hover .card-title {
+    color: #0d6efd;
+  }
+  
+  .feed-card:hover .text-primary {
+    text-decoration: underline;
+  }
+}
+
+/* Dark Mode Hazırlığı (Opsiyonel) */
+@media (prefers-color-scheme: dark) {
+  /* Dark mode stilleri buraya eklenebilir */
+}
+
+/* Animasyon Performans Optimizasyonu */
+@media (prefers-reduced-motion: reduce) {
+  .feed-card,
+  .btn-group .btn,
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Print Stilleri */
+@media print {
+  .btn-group,
+  .header-card {
+    display: none !important;
+  }
+  
+  .feed-card {
+    page-break-inside: avoid;
+    box-shadow: none !important;
+  }
+}

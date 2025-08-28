@@ -1,0 +1,196 @@
+/* ===================================
+   YENİLENMİŞ HASTALIK DETAY STİLLERİ
+   Ana Renk: #6c5ce7 (Mor)
+   =================================== */
+
+/* Genel Sayfa Stilleri */
+.hastalik-detay-container {
+    padding: 40px 0;
+    background: linear-gradient(135deg, #f5f3ff 0%, #e8e5f5 100%);
+    min-height: 100vh;
+}
+
+/* Üst Başlık Alanı */
+.sayfa-baslik-alani {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(108, 92, 231, 0.15);
+}
+
+.geri-butonu {
+    background: rgba(108, 92, 231, 0.08) !important;
+    border: 2px solid rgba(108, 92, 231, 0.2) !important;
+    color: #6c5ce7 !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.geri-butonu:hover {
+    background: rgba(108, 92, 231, 0.15) !important;
+    transform: translateX(-3px);
+}
+
+.sayfa-baslik {
+    color: #2d3436;
+    font-weight: 700;
+}
+
+.paylasim-yap-btn {
+    background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 12px !important;
+    padding: 0.75rem 1.5rem !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.2);
+    transition: all 0.3s ease !important;
+}
+
+.paylasim-yap-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(108, 92, 231, 0.3);
+}
+
+/* Filtre Kartı */
+.filtre-karti {
+    background: white;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 5px 25px rgba(108, 92, 231, 0.08);
+    padding: 1.5rem;
+}
+
+.filtre-karti .form-select, .filtre-karti .form-control {
+    border-radius: 12px;
+    border-color: #e8e5f5;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+.filtre-karti .form-select:focus, .filtre-karti .form-control:focus {
+    border-color: #a29bfe;
+    box-shadow: 0 0 0 0.2rem rgba(108, 92, 231, 0.1);
+}
+
+/* Paylaşım Kartı */
+.paylasim-karti {
+    background: white;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 5px 25px rgba(108, 92, 231, 0.07);
+    transition: all 0.3s ease;
+}
+
+.paylasim-karti:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(108, 92, 231, 0.1);
+}
+
+.paylasim-karti .card-header {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(108, 92, 231, 0.1);
+}
+
+.paylasim-karti .card-header h5 {
+    color: #2d3436;
+    font-weight: 600;
+}
+
+.paylasim-karti .card-body p {
+    color: #636e72;
+    line-height: 1.7;
+}
+
+/* Açılır/Kapanır Listeler */
+.paylasim-karti .list-group-item-action {
+    background: #f8f7ff;
+    color: #6c5ce7;
+    font-weight: 600 !important;
+    transition: background-color 0.2s ease;
+    border-top: 1px solid rgba(108, 92, 231, 0.1) !important;
+}
+.paylasim-karti .list-group-item-action:hover {
+    background-color: #f0edff;
+}
+
+.paylasim-karti .list-group-flush .list-group-item {
+    background-color: #faf9ff;
+    border-color: rgba(108, 92, 231, 0.1);
+}
+
+.transition-transform {
+    transition: transform 0.3s ease;
+}
+
+.rotate-180 {
+    transform: rotate(180deg);
+}
+
+/* Sonuç Bulunamadı Uyarısı */
+.uyari-kutusu {
+    background: linear-gradient(135deg, #f8f7ff 0%, #f0edff 100%);
+    border: 2px dashed #d4cdff;
+    border-radius: 15px;
+    padding: 40px;
+    text-align: center;
+    color: #636e72;
+    font-size: 1.05rem;
+}
+
+/* Fotoğraf Galerisi */
+.fotograf-galeri-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Galerinin maksimum genişliği */
+    margin: 1rem auto; /* BURADA DÜZELTME YAPILDI */
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.galeri-fotografi {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover; /* Resmin container'a sığmasını sağlar */
+}
+
+.galeri-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.galeri-btn:hover {
+    background: rgba(0,0,0,0.8);
+}
+
+.galeri-btn-prev {
+    left: 10px;
+}
+
+.galeri-btn-next {
+    right: 10px;
+}
+
+.foto-sayac {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+}

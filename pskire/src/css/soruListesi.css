@@ -1,0 +1,187 @@
+/* ===================================
+   YENİLENMİŞ SORU LİSTESİ STİLLERİ
+   Ana Renk: #6c5ce7 (Mor)
+   =================================== */
+
+/* Genel Sayfa Stilleri */
+body {
+    background: linear-gradient(135deg, #f5f3ff 0%, #e8e5f5 100%);
+}
+
+.soru-listesi-container {
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+
+/* Başlık ve Buton */
+.sayfa-baslik {
+    color: #2d3436;
+    font-weight: 700;
+}
+
+.yeni-soru-btn {
+    background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 50rem !important;
+    padding: 1rem 2rem !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.2);
+    transition: all 0.3s ease !important;
+}
+
+.yeni-soru-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(108, 92, 231, 0.3);
+}
+
+/* Filtre Kartı */
+.filtre-karti {
+    background: white;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+    /* !! DEĞİŞİKLİK: Arama kutusuyla arasındaki boşluk artırıldı !! */
+    margin-bottom: 3rem !important;
+}
+
+.filtre-karti .card-body {
+    padding: 2rem !important;
+}
+
+.filtre-karti .card-title {
+    color: #6c5ce7;
+    font-weight: 600;
+}
+
+.filtre-karti .form-select, .filtre-karti .btn {
+    border-radius: 12px !important;
+    min-height: 58px;
+}
+
+/* !! YENİ: floating label içindeki ikon ve yazının daha iyi hizalanması için eklendi !! */
+.filtre-karti .form-floating > .form-select {
+    padding-top: 1.625rem;
+    padding-bottom: .625rem;
+}
+
+.filtre-karti .form-select:focus {
+    border-color: #a29bfe;
+    box-shadow: 0 0 0 0.25rem rgba(108, 92, 231, 0.2);
+}
+
+/* Arama Kutusu */
+.arama-kutusu {
+    position: relative;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.arama-kutusu .form-control {
+    border: 2px solid transparent;
+    border-radius: 16px !important;
+    padding-left: 50px !important;
+}
+
+.arama-kutusu .form-control:focus {
+    border-color: #6c5ce7;
+    box-shadow: none;
+}
+
+.arama-kutusu .input-group-text {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    z-index: 5;
+    font-size: 1.2rem;
+    color: #6c5ce7;
+}
+
+/* Soru Kartı Stilleri */
+.soru-karti {
+    background: white;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 5px 25px rgba(108, 92, 231, 0.07);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.soru-karti:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(108, 92, 231, 0.12);
+}
+
+.soru-karti-baslik {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2d3436;
+    transition: color 0.2s ease;
+}
+
+.soru-karti-baslik:hover {
+    color: #6c5ce7;
+}
+
+.soru-karti .card-text {
+    color: #636e72;
+}
+
+/* Kart Alt Kısım (Avatar, Etiketler) */
+.kart-footer {
+    border-top: 1px solid #f0f0f0;
+}
+
+.avatar-daire {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.avatar-isim:hover {
+    text-decoration: underline;
+}
+
+.etiket {
+    font-size: 0.8rem !important;
+    padding: 0.4rem 0.8rem !important;
+    border-radius: 20px !important;
+    font-weight: 500;
+}
+
+.hastalik-etiket {
+    background: rgba(33, 190, 140, 0.1) !important;
+    color: #178e69 !important;
+}
+
+.ilac-etiket {
+    background: rgba(23, 162, 184, 0.1) !important;
+    color: #0c7b8d !important;
+}
+
+/* Eşleşen Yorum Kutusu */
+.eslesen-yorum-kutusu {
+    background: linear-gradient(135deg, #f8f7ff 0%, #f0edff 100%);
+    border-left: 4px solid #a29bfe !important;
+    border-radius: 10px;
+}
+
+.eslesen-yorum-kutusu .yorum-icerik {
+    background-color: rgba(255,255,255,0.6);
+    border: 1px solid #e8e5f5;
+}
+
+/* Diğer */
+.soru-karti .dropdown-menu {
+    border-radius: 12px;
+}

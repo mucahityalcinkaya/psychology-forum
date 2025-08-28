@@ -1,0 +1,87 @@
+/* ===================================
+   PAYLAŞIM DETAY SAYFASI STİLLERİ
+   =================================== */
+
+/* Genel Sayfa Stilleri */
+.paylasim-detay-container {
+    padding: 40px 0;
+    background: linear-gradient(135deg, #f5f3ff 0%, #e8e5f5 100%);
+    min-height: 100vh;
+}
+
+/* Üst Navigasyon Butonları */
+.geri-butonu {
+    background: white !important;
+    border: 1px solid #e0dff0 !important;
+    color: #6c5ce7 !important;
+    font-weight: 500;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(108, 92, 231, 0.05);
+}
+
+.geri-butonu:hover {
+    background: #f8f7ff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.1);
+}
+
+/* Ana Paylaşım Kartı */
+.paylasim-karti {
+    background: white;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 8px 40px rgba(108, 92, 231, 0.1);
+    overflow: hidden;
+}
+
+.paylasim-karti .card-header {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(108, 92, 231, 0.1);
+    padding: 1.5rem 2rem;
+}
+
+.paylasim-karti .card-body {
+    padding: 2rem;
+}
+
+.paylasim-karti .card-footer {
+    background-color: #f8f7ff;
+    border-top: 1px solid rgba(108, 92, 231, 0.1);
+}
+
+/* Kart İçeriği */
+.paylasim-baslik {
+    color: #2d3436;
+    font-weight: 700;
+}
+
+.paylasim-icerik {
+    color: #636e72;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    font-size: 1.05rem;
+}
+
+.detay-bolum-baslik {
+    color: #6c5ce7;
+    font-weight: 600;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(108, 92, 231, 0.1);
+    margin-bottom: 1.5rem !important;
+}
+
+/* İlaç ve Yan Etki Listeleri */
+.detay-listesi {
+    list-style: none;
+    padding-left: 0;
+}
+
+.detay-listesi li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.detay-listesi li:last-child {
+    border-bottom: none;
+}

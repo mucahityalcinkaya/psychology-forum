@@ -1,0 +1,311 @@
+/* src/components/TartismalarListesi.css */
+
+/* ===================================
+   KART TEMEL STİLLERİ
+   =================================== */
+.tartisma-card {
+  /* Smooth geçişler için */
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+/* Kartın üst kenarında renkli çizgi */
+.tartisma-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0d6efd, #6610f2, #6f42c1);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: left;
+}
+
+.tartisma-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* Hover efektleri */
+.tartisma-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  z-index: 10;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), 
+              0 5px 15px rgba(0, 0, 0, 0.08) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e3e9ff 100%);
+}
+
+/* ===================================
+   KART BAŞLIK STİLLERİ
+   =================================== */
+.tartisma-card .card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.tartisma-card .card-title a {
+  color: #2c3e50;
+  transition: color 0.3s ease;
+  display: inline-block;
+}
+
+.tartisma-card:hover .card-title a {
+  color: #0d6efd;
+}
+
+/* ===================================
+   İÇERİK STİLLERİ
+   =================================== */
+.tartisma-card .card-text {
+  line-height: 1.6;
+  color: #6c757d;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  min-height: 50px;
+}
+
+.tartisma-card .card-body {
+  padding: 1.5rem;
+}
+
+/* ===================================
+   YORUM ÖNİZLEME ANİMASYONU
+   =================================== */
+.preview-yorumlar {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  margin-top: 0;
+  padding-top: 0;
+  position: relative;
+}
+
+/* Yorumlar için separator */
+.preview-yorumlar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #dee2e6, transparent);
+  transition: width 0.3s ease 0.2s;
+}
+
+.tartisma-card:hover .preview-yorumlar {
+  max-height: 250px;
+  opacity: 1;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+}
+
+.tartisma-card:hover .preview-yorumlar::before {
+  width: 100%;
+}
+
+/* Tek tek yorum animasyonları */
+.preview-yorumlar > div {
+  transform: translateX(-20px);
+  opacity: 0;
+  transition: all 0.3s ease;
+  padding: 0.5rem;
+  border-radius: 8px;
+  background: transparent;
+  margin-bottom: 0.75rem;
+}
+
+.preview-yorumlar > div:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.preview-yorumlar > div:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.tartisma-card:hover .preview-yorumlar > div {
+  transform: translateX(0);
+  opacity: 1;
+  background: rgba(248, 249, 250, 0.5);
+}
+
+/* Yorum hover efekti */
+.preview-yorumlar > div:hover {
+  background: rgba(13, 110, 253, 0.05) !important;
+  padding-left: 1rem;
+}
+
+/* ===================================
+   ALT BİLGİ (FOOTER) STİLLERİ
+   =================================== */
+.tartisma-card .border-top {
+  border-color: #e9ecef !important;
+  transition: border-color 0.3s ease;
+}
+
+.tartisma-card:hover .border-top {
+  border-color: #dee2e6 !important;
+}
+
+/* Kullanıcı ve etkileşim badge'leri */
+.tartisma-card small {
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+}
+
+.tartisma-card small i {
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.tartisma-card:hover small i {
+  transform: scale(1.2);
+}
+
+/* Etkileşim sayısı vurgusu */
+.tartisma-card small.text-primary {
+  background: linear-gradient(135deg, #0d6efd, #6f42c1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 600;
+}
+
+/* ===================================
+   SAYFA BAŞLIK STİLLERİ
+   =================================== */
+.container .border-bottom {
+  position: relative;
+  padding-bottom: 1.5rem !important;
+}
+
+/* Başlık ikonu animasyonu */
+.bi-journals {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* ===================================
+   RESPONSIVE TASARIM
+   =================================== */
+@media (max-width: 768px) {
+  .tartisma-card {
+    margin-bottom: 1rem;
+  }
+  
+  .tartisma-card:hover {
+    transform: translateY(-5px) scale(1.01);
+  }
+  
+  .preview-yorumlar {
+    font-size: 0.85rem;
+  }
+  
+  .tartisma-card .card-body {
+    padding: 1.25rem;
+  }
+}
+
+/* ===================================
+   LOADING ANİMASYONU (Opsiyonel)
+   =================================== */
+.tartisma-card {
+  animation: fadeInUp 0.5s ease-out;
+  animation-fill-mode: both;
+}
+
+.tartisma-card:nth-child(1) { animation-delay: 0.1s; }
+.tartisma-card:nth-child(2) { animation-delay: 0.2s; }
+.tartisma-card:nth-child(3) { animation-delay: 0.3s; }
+.tartisma-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===================================
+   EKSTRA EFEKTLER
+   =================================== */
+
+/* Kartların içindeki linkler için altı çizili efekt */
+.tartisma-card a {
+  position: relative;
+  text-decoration: none;
+}
+
+/* Profil linki hover efekti */
+.tartisma-card a.text-muted:hover {
+  color: #0d6efd !important;
+}
+
+/* Boş durum stili */
+.col-12 p.text-center {
+  padding: 3rem;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 12px;
+  color: #6c757d;
+  font-size: 1.1rem;
+}
+
+/* Scroll animasyonu için görünürlük */
+.tartisma-card {
+  will-change: transform;
+}
+
+/* Performans optimizasyonu */
+.tartisma-card * {
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Kartlar arası boşluk düzenlemesi */
+.row.g-4 {
+  --bs-gutter-y: 2rem;
+  --bs-gutter-x: 2rem;
+}
+
+/* Focus durumu için erişilebilirlik */
+.tartisma-card:focus-within {
+  outline: 2px solid #0d6efd;
+  outline-offset: 2px;
+}
+
+/* Yeni tartışma butonu stili (eğer eklenirse) */
+.btn-new-discussion {
+  background: linear-gradient(135deg, #0d6efd, #6f42c1);
+  border: none;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
+}
+
+.btn-new-discussion:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(13, 110, 253, 0.4);
+}

@@ -1,0 +1,101 @@
+/* Google Fonts'tan Poppins fontunu projenize ekleyebilirsiniz.
+   Bunun için index.html dosyanıza @import kuralını ekleyin.
+   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+*/
+
+/* Bu seçici sayesinde aşağıdaki tüm stiller SADECE Register sayfası için geçerli olur. */
+.register-page-container {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+/* Kart Stilleri */
+.register-page-container .card {
+  max-width: 450px;
+  background-color: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(8px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  padding: 1rem;
+}
+
+/* Başlık */
+.register-page-container .card-title {
+  font-weight: 600;
+  color: #333;
+  font-size: 1.75rem;
+}
+
+/* Etiketler */
+.register-page-container .form-label {
+  font-weight: 500;
+  color: #555;
+}
+
+/* Input ve Select Alanları */
+.register-page-container .form-control,
+.register-page-container .form-select {
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  padding: 0.75rem 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #f9f9f9;
+  color: #333;
+  /* JSX içindeki inline stilleri ezip geçmek için !important gerekli olabilir. */
+  border-color: #ddd !important;
+}
+
+/* Odaklanma (Focus) Stili */
+.register-page-container .form-control:focus,
+.register-page-container .form-select:focus {
+  border-color: #764ba2 !important;
+  box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.25);
+  background-color: #fff;
+  outline: none;
+}
+
+.register-page-container .form-control::placeholder {
+  color: #aaa;
+}
+
+.register-page-container .form-select option[value=""] {
+  color: #999;
+}
+
+/* "Üye misiniz?" Linki */
+.register-page-container .text-end small a {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.register-page-container .text-end small a:hover {
+  color: #764ba2;
+  text-decoration: underline;
+}
+
+/* Kayıt Ol Butonu */
+.register-page-container .btn-outline-success {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem;
+  font-weight: 600;
+  color: white;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+}
+
+.register-page-container .btn-outline-success:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(118, 75, 162, 0.4);
+  color: white;
+}
+
+.register-page-container .btn-outline-success:active {
+  transform: translateY(0);
+}

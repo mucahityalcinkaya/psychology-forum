@@ -1,0 +1,114 @@
+/* ===================================
+   TEST DETAY SAYFASI STİLLERİ
+   =================================== */
+
+.test-detay-container {
+    background: linear-gradient(135deg, #f5f3ff 0%, #e8e5f5 100%);
+    min-height: 100vh;
+    padding: 40px 0;
+}
+
+.test-karti {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 8px 40px rgba(108, 92, 231, 0.15);
+    overflow: hidden; /* Kenar yuvarlaklığını korumak için */
+}
+
+.test-karti-govde {
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 3rem;
+}
+
+/* İlerleme Çubuğu */
+.progress-container {
+    height: 15px;
+    background-color: #e8e5f5;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, #a29bfe, #6c5ce7) !important;
+}
+
+/* Soru Metni ve Görseli */
+.soru-metni {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #2d3436;
+    line-height: 1.4;
+}
+
+.soru-gorsel {
+    width: 100%;
+    max-width: 450px;
+    height: 300px;
+    margin: 1.5rem auto;
+}
+
+.soru-gorsel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* Cevap Butonları */
+.cevap-butonu {
+    background-color: #f8f7ff;
+    border: 2px solid #e8e5f5;
+    color: #636e72;
+    min-height: 80px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    border-radius: 12px !important;
+}
+
+.cevap-butonu:hover {
+    transform: translateY(-3px);
+    background-color: #6c5ce7;
+    color: white;
+    border-color: #6c5ce7;
+    box-shadow: 0 5px 20px rgba(108, 92, 231, 0.2);
+}
+
+/* Sonuç Ekranı */
+.sonuc-ekrani {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.sonuc-ekrani .display-2 {
+    font-size: 5rem;
+}
+.sonuc-ekrani .text-primary { color: #6c5ce7 !important; }
+.sonuc-ekrani .text-warning { color: #fdcb6e !important; }
+.sonuc-ekrani .text-danger  { color: #d63031 !important; }
+
+
+.sonuc-ekrani .btn-tekrar {
+    background: linear-gradient(135deg, #1dd1a1, #10ac84);
+    border: none;
+    color: white;
+}
+.sonuc-ekrani .btn-diger {
+    background-color: #636e72;
+    border: none;
+    color: white;
+}

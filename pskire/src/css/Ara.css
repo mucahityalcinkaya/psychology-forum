@@ -1,0 +1,112 @@
+/* ========================================
+   Ara Sayfası Stilleri - Psikoblog
+   ======================================== */
+
+/* Ana başlık stili */
+.ara-page-container h1 {
+  font-weight: 600;
+  color: var(--text-dark);
+  letter-spacing: -0.5px;
+}
+
+/* Arama çubuğu kapsayıcısı */
+.ara-page-container .input-group {
+  border-radius: 16px; /* Daha yuvarlak kenarlar */
+  background-color: #fff;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(155, 136, 211, 0.15);
+  box-shadow: 0 4px 20px rgba(155, 136, 211, 0.1);
+}
+
+/* Arama çubuğuna odaklanıldığında kapsayıcının stili */
+.ara-page-container .input-group:focus-within {
+  box-shadow: 0 5px 25px rgba(155, 136, 211, 0.2);
+  border-color: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+/* Arama ikonu */
+.ara-page-container .input-group .input-group-text {
+  background-color: transparent;
+  border: none;
+  padding-left: 1.25rem;
+}
+
+.ara-page-container .input-group .input-group-text i {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.ara-page-container .input-group:focus-within .input-group-text i {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Arama input alanı */
+.ara-page-container .input-group .form-control {
+  background-color: transparent;
+  border: none;
+  box-shadow: none !important;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+/* Placeholder metni için stil */
+.ara-page-container .input-group .form-control::placeholder {
+  color: var(--text-light);
+  font-weight: 400;
+}
+
+/* Sonuçlar listesi */
+.ara-page-container .list-group {
+  border: none; /* Varsayılan çerçeveyi kaldır */
+  max-height: 60vh; /* Çok uzun listeler için scroll oluştur */
+  overflow-y: auto;
+  padding-right: 5px; /* Scrollbar için boşluk */
+}
+
+/* Her bir sonuç öğesi */
+.ara-page-container .list-group-item {
+  margin-bottom: 0.75rem;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+  transition: all 0.25s ease-out;
+  padding: 1rem 1.25rem;
+}
+
+/* Sonuç öğesi hover efekti */
+.ara-page-container .list-group-item:hover,
+.ara-page-container .list-group-item:focus {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 8px 25px rgba(155, 136, 211, 0.15);
+  border-color: rgba(155, 136, 211, 0.2);
+  background-color: #fff;
+  z-index: 10;
+  outline: none;
+}
+
+/* Sonuç öğesindeki ikon */
+.ara-page-container .list-group-item .bi-person-circle {
+  color: var(--secondary-color);
+}
+
+/* Sonuç öğesindeki isim ve kullanıcı adı */
+.ara-page-container .list-group-item .fw-bold {
+  color: var(--text-dark);
+}
+.ara-page-container .list-group-item .text-muted {
+  color: var(--text-light);
+}
+
+/* "Sonuç bulunamadı" uyarısı */
+.ara-page-container .alert-warning {
+  background-color: rgba(255, 243, 224, 0.8);
+  border-color: var(--accent-color);
+  color: var(--text-dark);
+  font-weight: 500;
+  border-radius: 12px;
+}

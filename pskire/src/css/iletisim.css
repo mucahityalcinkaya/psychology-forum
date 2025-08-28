@@ -1,0 +1,141 @@
+/* ========================================
+   İLETİŞİM.CSS - Modern & Soft Tasarım
+   Ana Renk: #6c5ce7 (Mor)
+   ======================================== */
+
+.iletisim-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f3ff 0%, #e8e5f5 50%, #f0e6ff 100%);
+  padding: 40px 0;
+}
+
+.iletisim-header {
+  text-align: center;
+  margin-bottom: 30px;
+  animation: fadeInDown 0.5s ease;
+}
+
+.page-title {
+  color: #2d3436;
+  font-weight: 700;
+  font-size: 2rem !important;
+  margin: 0 0 10px 0 !important;
+  background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.page-subtitle {
+    color: #636e72;
+}
+
+.iletisim-card {
+  background: white !important;
+  border: none !important;
+  border-radius: 20px !important;
+  box-shadow: 0 10px 40px rgba(108, 92, 231, 0.1) !important;
+  overflow: hidden;
+  animation: fadeInUp 0.6s ease;
+}
+
+.iletisim-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #6c5ce7, #a29bfe, #6c5ce7);
+  background-size: 200% 100%;
+  animation: gradientMove 3s ease infinite;
+}
+
+.iletisim-card-body {
+  padding: 35px !important;
+  position: relative;
+}
+
+.form-group { margin-bottom: 25px; }
+
+.form-label {
+  color: #2d3436 !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  margin-bottom: 10px !important;
+  display: flex;
+  align-items: center;
+}
+
+.form-label::before {
+  content: '✦';
+  color: #6c5ce7;
+  margin-right: 8px;
+  font-size: 0.8rem;
+}
+
+.custom-input,
+.custom-textarea,
+.custom-select {
+  border: 2px solid #e8e5f5 !important;
+  border-radius: 12px !important;
+  padding: 12px 16px !important;
+  font-size: 1rem !important;
+  transition: all 0.3s ease !important;
+  background: #fafafe !important;
+}
+
+.custom-input:focus,
+.custom-textarea:focus,
+.custom-select:focus {
+  border-color: #6c5ce7 !important;
+  box-shadow: 0 0 0 0.2rem rgba(108, 92, 231, 0.1) !important;
+  background: white !important;
+  outline: none !important;
+}
+
+.custom-textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.submit-btn-container {
+  margin-top: 35px !important;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 15px !important;
+  padding: 16px 40px !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+  transition: all 0.3s ease !important;
+  width: 100% !important;
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(108, 92, 231, 0.4) !important;
+}
+
+.submit-btn.loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

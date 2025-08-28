@@ -1,0 +1,176 @@
+/* ===================================
+   PROFİL SAYFASI STİLLERİ - FİNAL
+   Ana Renk: #6c5ce7 (Mor)
+   =================================== */
+
+/* Genel Sayfa Stilleri */
+.profil-container {
+    padding-top: 40px;
+    padding-bottom: 60px;
+    background: linear-gradient(135deg, #f5f3ff 0%, #e8e5f5 100%);
+    min-height: calc(100vh - 56px); /* Navbar yüksekliği varsayılarak */
+}
+
+/* Sol Profil Kartı */
+.profil-karti {
+    background: white;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(108, 92, 231, 0.1);
+    position: sticky;
+    top: 80px; /* Avatarın sığması için boşluk bırakıldı */
+    /* Dışarı taşan avatarın görünmesi için "overflow: hidden" kaldırıldı. */
+}
+
+
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Avatar */
+
+
+.profil-karti::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    /* Kavisli alan için yüksekliği artırıyoruz */
+    height: 85px; 
+    background: linear-gradient(90deg, #6c5ce7, #a29bfe, #6c5ce7);
+    background-size: 200% 100%;
+    animation: gradientMove 3s ease infinite;
+    /* !! YENİ: Oyulmuş/Kavisli şekli oluşturan sihirli kısım !! */
+    clip-path: path('M 0 0 L 100% 0 L 100% 65% C 80% 100%, 20% 100%, 0 65% Z');
+}
+
+
+/* Bu kuralı bulup aşağıdaki gibi güncelleyin */
+.profil-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    /* Yeni kavisli alana tam oturması için margin'i ayarlıyoruz */
+    margin: -65px auto 15px auto; 
+    border: 5px solid white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+    color: white;
+    position: relative; 
+    z-index: 2; 
+}
+
+
+/* Bu kuralı bulup aşağıdaki gibi güncelleyin */
+.profil-karti .card-body {
+    padding: 2rem;
+    /* Yeni kavisli başlık ve avatar için üstten daha fazla boşluk bırakıyoruz */
+    padding-top: 50px; 
+}
+.profil-karti .card-title {
+    font-weight: 700;
+    color: #2d3436;
+}
+
+/* Takipçi / Takip Sayıları */
+.takip-stats {
+    padding: 1rem 0;
+    margin: 1rem 0;
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.takip-stats a {
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.takip-stats a:hover {
+    transform: scale(1.05);
+    color: #6c5ce7 !important;
+}
+
+.takip-stats strong {
+    font-size: 1.5rem;
+}
+
+/* Profil Kartı Aksiyon Linkleri */
+.profil-karti .list-group-item {
+    border: none;
+    padding: 0.9rem 1.5rem;
+    transition: all 0.2s ease;
+    color: #636e72;
+    font-weight: 500;
+}
+
+.profil-karti .list-group-item:hover {
+    background-color: #f8f7ff;
+    color: #6c5ce7;
+    padding-left: 2rem;
+}
+
+.profil-karti .list-group-item-danger:hover {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+}
+
+/* Sağ Taraf Sekmeler */
+.profil-sekmeler .nav-link {
+    border: none;
+    border-radius: 12px;
+    color: #636e72;
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.profil-sekmeler .nav-link.active {
+    background-color: #6c5ce7;
+    color: white;
+    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.2);
+}
+
+.profil-sekmeler .nav-link:not(.active):hover {
+    color: #2d3436;
+}
+
+/* İçerik Kartları (Paylaşım/Soru) */
+.icerik-karti {
+    background: white;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(108, 92, 231, 0.05);
+    transition: all 0.3s ease;
+}
+
+.icerik-karti:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(108, 92, 231, 0.08);
+}
+
+.icerik-karti .card-title {
+    font-weight: 600;
+    color: #2d3436;
+}
+
+.icerik-karti .btn-git {
+    background-color: rgba(108, 92, 231, 0.1);
+    color: #6c5ce7;
+    border: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.icerik-karti .btn-git:hover {
+    background-color: #6c5ce7;
+    color: white;
+}

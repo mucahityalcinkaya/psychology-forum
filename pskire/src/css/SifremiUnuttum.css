@@ -1,0 +1,116 @@
+/* Google Fonts'tan Poppins fontunu projenize eklemek için
+   public/index.html dosyanızın <head> etiketleri arasına aşağıdaki satırı ekleyebilirsiniz:
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+*/
+
+.forgot-password-container {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.forgot-password-card {
+  width: 100%;
+  max-width: 450px;
+  background-color: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(8px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  padding: 2.5rem;
+}
+
+.forgot-password-card .card-title {
+  font-weight: 600;
+  color: #333;
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.forgot-password-card .form-label {
+  font-weight: 500;
+  color: #555;
+}
+
+.forgot-password-card .form-control {
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  padding: 0.75rem 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #f9f9f9;
+}
+
+.forgot-password-card .form-control:focus {
+  border-color: #764ba2;
+  box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.25);
+  background-color: #fff;
+  outline: none;
+}
+
+.btn-submit {
+  width: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem;
+  font-weight: 600;
+  color: white;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+}
+
+.btn-submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(118, 75, 162, 0.4);
+}
+
+.btn-submit:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Geri Sayım ve Yeniden Gönder Stilleri */
+.timer-container {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.timer-text {
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.timer-text span {
+  font-weight: 700;
+  color: #764ba2;
+}
+
+.resend-link {
+  color: #667eea;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.resend-link:hover {
+  color: #764ba2;
+  text-decoration: underline;
+}
+
+.resend-link.disabled {
+  color: #999;
+  cursor: not-allowed;
+  text-decoration: none;
+}

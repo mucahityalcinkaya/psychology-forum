@@ -1,0 +1,159 @@
+/* ===================================
+   TEST LİSTESİ SAYFASI - FİNAL TASARIM
+   =================================== */
+
+/* Sayfa Arkaplanı ve Genel Ayarlar */
+.test-listesi-container {
+  background: radial-gradient(circle at 50% 0%, #eef0ff, #f5f3ff 70%);
+  min-height: 100vh;
+  padding-top: 1px; /* Margin collapse engellemek için */
+}
+
+/* Sayfa Başlığı ve Açıklaması */
+.test-header {
+  animation: fadeInDown 0.6s ease-out;
+}
+
+.page-title {
+  font-weight: 700;
+  background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.page-description {
+  color: #636e72;
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* KARTIN 3D DÖNME ALANI */
+.flip-card {
+  background-color: transparent;
+  width: 100%;
+  height: 350px;
+  perspective: 1500px;
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s, box-shadow 0.4s;
+  transform-style: preserve-3d;
+  box-shadow: 0 5px 15px rgba(108, 92, 231, 0.0);
+}
+
+/* Hover durumunda iç katmanı döndür ve karta "kalkma" efekti ver */
+.card-link:hover .flip-card-inner {
+  transform: rotateY(180deg) translateY(-8px);
+  box-shadow: 0 20px 40px rgba(108, 92, 231, 0.2);
+}
+
+/* KARTIN ÖN VE ARKA YÜZLERİ İÇİN ORTAK STİLLER */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  overflow: hidden;
+}
+
+/* KARTIN ÖN YÜZÜ - MODERN GÖRÜNÜM */
+.flip-card-front {
+  background: #ffffff;
+  color: #2d3436;
+  border: 1px solid #e8e5f5;
+  justify-content: center;
+  text-align: center;
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.card-title-front {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #343a40;
+  margin-bottom: 15px;
+}
+
+.card-text-front {
+    color: #6c757d;
+    line-height: 1.6;
+}
+
+/* KARTIN ARKA YÜZÜ - İSTEĞİNİZE GÖRE AÇIK RENK VE YÜKSEK KONTRAST */
+.flip-card-back {
+  /* DÜZELTME: Sizin istediğiniz açık mor gradyan geri getirildi */
+  background: linear-gradient(135deg, #dcd6ff 0%, #f4f2ff 100%);
+  /* DÜZELTME: Okunabilirlik için metin rengi koyu yapıldı */
+  color: #4a3b8d;
+  transform: rotateY(180deg);
+  justify-content: flex-start;
+  text-align: center;
+  padding-top: 40px;
+}
+
+.card-title-back {
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 1.6rem;
+  z-index: 1;
+}
+
+.card-text-back {
+    font-size: 1rem;
+    line-height: 1.7;
+    opacity: 0.9;
+    flex-grow: 1;
+    z-index: 1;
+}
+
+/* KART ARKASINDAKİ BUTON */
+.start-test-btn {
+    /* Butonun yeni açık arkaplana uyumlu hali */
+    background-color: #6c5ce7;
+    color: #ffffff;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 30px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.start-test-btn:hover {
+    background-color: #5847c2;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Animasyonlar */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

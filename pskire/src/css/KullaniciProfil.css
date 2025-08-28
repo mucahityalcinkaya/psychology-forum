@@ -1,0 +1,173 @@
+/* ===================================
+   KULLANICI PROFİL SAYFASI STİLLERİ
+   =================================== */
+
+/* Genel Sayfa Stilleri */
+.profil-container {
+    padding-top: 40px;
+    padding-bottom: 60px;
+    background: linear-gradient(135deg, #f5f3ff 0%, #e8e5f5 100%);
+    min-height: calc(100vh - 56px);
+}
+
+/* Sol Profil Kartı */
+.profil-karti {
+    background: white;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(108, 92, 231, 0.1);
+    position: sticky;
+    top: 80px;
+}
+
+.profil-karti::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 85px; 
+    background: linear-gradient(90deg, #6c5ce7, #a29bfe, #6c5ce7);
+    background-size: 200% 100%;
+    animation: gradientMove 3s ease infinite;
+    clip-path: path('M 0 0 L 100% 0 L 100% 65% C 80% 100%, 20% 100%, 0 65% Z');
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Avatar */
+.profil-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: -65px auto 15px auto; 
+    border: 5px solid white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+    color: white;
+    position: relative; 
+    z-index: 2; 
+}
+
+.profil-karti .card-body {
+    padding: 1.5rem;
+    padding-top: 50px; 
+}
+.profil-karti .card-title {
+    font-weight: 700;
+    color: #2d3436;
+}
+
+/* Rol Rozetleri */
+.rol-badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.3em 0.6em;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+/* Takipçi / Takip Sayıları */
+.takip-stats {
+    padding: 1rem 0;
+    margin: 1rem 0;
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+}
+.takip-stats a:hover {
+    color: #6c5ce7 !important;
+}
+.takip-stats strong {
+    font-size: 1.5rem;
+}
+
+/* Takip Et / Takipten Çık Butonu */
+.btn-takip {
+    font-weight: 600;
+    border-radius: 12px !important;
+    padding: 0.75rem;
+    transition: all 0.3s ease;
+}
+.btn-takip.takip-et {
+    background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+    color: white;
+    border: none;
+}
+.btn-takip.takip-et:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+}
+.btn-takip.takipten-cik {
+    background-color: #f8f9fa;
+    border: 1px solid #d63031;
+    color: #d63031;
+}
+.btn-takip.takipten-cik:hover {
+    background-color: #d63031;
+    color: white;
+}
+
+/* Sağ Taraf Sekmeler */
+.profil-sekmeler .nav-link {
+    border: none;
+    border-radius: 12px;
+    color: #636e72;
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.profil-sekmeler .nav-link.active {
+    background-color: #6c5ce7;
+    color: white;
+    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.2);
+}
+
+/* İçerik Kartları (Paylaşım/Soru) */
+.icerik-karti {
+    background: white;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(108, 92, 231, 0.05);
+    transition: all 0.3s ease;
+}
+.icerik-karti:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(108, 92, 231, 0.08);
+}
+.icerik-karti .btn-git {
+    background-color: rgba(108, 92, 231, 0.1);
+    color: #6c5ce7;
+    border: none;
+    font-weight: 500;
+}
+.icerik-karti .btn-git:hover {
+    background-color: #6c5ce7;
+    color: white;
+}
+
+.dropdown-submenu {
+  position: relative;
+}
+
+/* Açılacak olan alt menüyü başlangıçta gizliyoruz ve konumlandırıyoruz */
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%; /* Ana menünün tam sağına konumlandır */
+  margin-top: -1px; /* Dikeyde hizalamak için küçük bir ayar */
+  display: none; /* Başlangıçta gizli */
+}
+
+/* Fare ile üzerine gelindiğinde (hover), alt menüyü görünür yapıyoruz */
+.dropdown-submenu:hover > .dropdown-menu {
+  display: block; /* Görünür hale getir */
+}

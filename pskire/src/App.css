@@ -1,0 +1,70 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.kullanici-adi-link {
+  color: #212529; /* Bootstrap'in standart koyu rengi */
+  font-weight: bold; /* Kalın yazı stilini koruyalım */
+  text-decoration: none; /* Alt çizgiyi kaldır */
+  transition: color 0.2s ease-in-out; /* Renk geçişini yumuşatır */
+}
+
+/* Linkin üzerine gelince nasıl görüneceğini belirler (Mavi renk) */
+.kullanici-adi-link:hover {
+  color: #0d6efd !important; /* Bootstrap'in ana mavi rengi - !important ile öncelik sağlıyoruz */
+  text-decoration: none; /* Üzerine gelince de alt çizgi olmasın */
+}
+
+.answer-card {
+  transition: all 0.2s ease-in-out;
+}
+
+.answer-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  border-color: #0d6efd !important;
+  z-index: 10;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

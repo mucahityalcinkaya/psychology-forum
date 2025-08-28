@@ -1,0 +1,113 @@
+/* ========================================
+   YORUMKARTI.CSS - Modern & Ferah Tasarım
+   ======================================== */
+
+.yorum-karti-container {
+    width: 100%;
+}
+
+/* Her bir yorum kartının ana gövdesi */
+.yorum-karti {
+    background-color: #ffffff;
+    border: 1px solid #e8e5f5;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 10px rgba(108, 92, 231, 0.05);
+    transition: box-shadow 0.3s ease;
+}
+
+.yorum-karti:hover {
+    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.08);
+}
+
+/* Kart başlığı (isim ve menü) */
+.yorum-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+/* Yorum sahibinin adı */
+.yorum-sahibi {
+    font-weight: 600;
+    color: #2d3436;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.yorum-sahibi:hover {
+    color: #6c5ce7; /* Ana tema rengi */
+}
+
+/* Yorumun metin içeriği */
+.yorum-metni {
+    color: #636e72;
+    line-height: 1.6;
+    margin: 12px 0;
+    white-space: pre-wrap;
+}
+
+/* Kart altlığı (tarih ve cevapla butonu) */
+.yorum-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+    margin-top: 12px;
+    border-top: 1px solid #f0f0f0;
+}
+
+/* Yorum tarihi */
+.yorum-tarih {
+    font-size: 0.85em;
+    color: #b2bec3;
+}
+
+/* Cevapla butonu */
+.yorum-cevapla-btn {
+    font-weight: 600 !important;
+    color: #6c5ce7 !important;
+    text-decoration: none !important;
+    transition: background-color 0.2s ease;
+    border-radius: 5px;
+    padding: 2px 8px !important;
+}
+
+.yorum-cevapla-btn:hover {
+    background-color: rgba(108, 92, 231, 0.1);
+}
+
+/* Cevap yazma formu alanı */
+.yorum-cevap-formu {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    border: 1px solid #e9ecef;
+}
+
+/* Alt yorumların (cevapların) olduğu bölüm */
+.child-yorumlar {
+    margin-top: 15px;
+    padding-left: 20px;
+    border-left: 2px solid #e8e5f5;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Kaldırılmış yorumlar için özel stil */
+.kaldirilmis-yorum {
+    background: #f8f9fa;
+    border-style: dashed;
+    border-color: #d6d8db;
+    box-shadow: none;
+}
+.kaldirilmis-metin {
+    color: #6c757d;
+    font-style: italic;
+    text-align: center;
+    padding: 10px 0;
+    margin: 0;
+}
