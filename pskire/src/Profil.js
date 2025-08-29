@@ -17,7 +17,7 @@ function Profil() {
     useEffect(() => {
         if (currentUser) {
             // Takip sayılarını al
-            fetch(`http://localhost:5000/api/kullanicilar/${currentUser.id}/takip-sayilari`)
+            fetch(`/api/kullanicilar/${currentUser.id}/takip-sayilari`)
                 .then(response => response.json())
                 .then(data => {
                     setTakipciSayisi(data.takipciSayisi);
@@ -26,7 +26,7 @@ function Profil() {
                 .catch(error => console.error("Takip sayıları çekerken hata:", error));
 
             // Kullanıcının paylaşımlarını al
-            fetch(`http://localhost:5000/api/kullanicipves/${currentUser.id}`)
+            fetch(`/api/kullanicipves/${currentUser.id}`)
                 .then(response => response.json())
                 .then(data => {
                 setPaylasimlarim(data.paylasimlar || []); // API'den veri gelmezse diye [] kontrolü eklemek iyidir.
@@ -46,7 +46,7 @@ function Profil() {
         if (!currentUser) return;
         
         try {
-            const response = await fetch('http://localhost:5000/api/takipci-cikar', {
+            const response = await fetch('/api/takipci-cikar', {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',

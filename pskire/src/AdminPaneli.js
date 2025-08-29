@@ -128,7 +128,7 @@ function AdminPaneli() {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch('http://localhost:5000/api/admin/panel-data');
+      const response = await fetch('/api/admin/panel-data');
       const data = await response.json();
       if (!response.ok) throw new Error(data.message || 'Panel verileri çekilemedi.');
       setSikayetler(data.sikayetler);
@@ -146,12 +146,12 @@ function AdminPaneli() {
       setError(null);
       try {
         if (iletisimTurleri.length === 0) {
-          const turResponse = await fetch('http://localhost:5000/api/iletisim-turleri');
+          const turResponse = await fetch('/api/iletisim-turleri');
           const turData = await turResponse.json();
           if (turResponse.ok) setIletisimTurleri(turData);
         }
         const response = await fetch(
-          `http://localhost:5000/api/admin/mesajlar?page=${sayfa}&limit=10&turId=${turId}`
+          `/api/admin/mesajlar?page=${sayfa}&limit=10&turId=${turId}`
         );
         const data = await response.json();
         if (!response.ok) throw new Error(data.message);
@@ -172,7 +172,7 @@ function AdminPaneli() {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch('http://localhost:5000/api/admin/ban-itirazlari');
+      const response = await fetch('/api/admin/ban-itirazlari');
       const data = await response.json();
       if (!response.ok) throw new Error(data.message || 'Ban itirazları çekilemedi.');
 
@@ -204,7 +204,7 @@ function AdminPaneli() {
     try {
       // Fetch user content
       const userContentResponse = await fetch(
-        `http://localhost:5000/api/banli-panel-verisi/${itiraz.user_id}`
+        `/api/banli-panel-verisi/${itiraz.user_id}`
       );
       const userContentData = await userContentResponse.json();
       if (!userContentResponse.ok) {
@@ -214,7 +214,7 @@ function AdminPaneli() {
 
       // Fetch appeal responses explicitly
       const response = await fetch(
-        `http://localhost:5000/api/admin/ban-itirazlari/${itiraz.id}`
+        `/api/admin/ban-itirazlari/${itiraz.id}`
       );
       const responseData = await response.json();
       if (!response.ok) {
@@ -243,7 +243,7 @@ function AdminPaneli() {
     }
     setCevapGonderiliyor(true);
     try {
-      const response = await fetch('http://localhost:5000/api/admin/ban-itiraz-cevapla', {
+      const response = await fetch('/api/admin/ban-itiraz-cevapla', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -259,7 +259,7 @@ function AdminPaneli() {
       // If status is 1 (accepted), remove the ban
       if (status === 1) {
         const banRemoveResponse = await fetch(
-          `http://localhost:5000/api/admin/kullanici-ban-kaldir/${seciliItiraz.user_id}`,
+          `/api/admin/kullanici-ban-kaldir/${seciliItiraz.user_id}`,
           {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
@@ -313,7 +313,7 @@ function AdminPaneli() {
     });
     if (result.isConfirmed) {
       try {
-        const response = await fetch('http://localhost:5000/api/admin/icerik-kaldir', {
+        const response = await fetch('/api/admin/icerik-kaldir', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ sikayet: sikayet, kaldiran_id: currentUser.id }),
@@ -341,7 +341,7 @@ function AdminPaneli() {
     });
     if (result.isConfirmed) {
       try {
-        const response = await fetch(`http://localhost:5000/api/admin/sikayet/${sikayetId}`, {
+        const response = await fetch(`/api/admin/sikayet/${sikayetId}`, {
           method: 'DELETE',
         });
         const data = await response.json();
@@ -358,7 +358,7 @@ function AdminPaneli() {
     if (window.confirm('Bu içeriği geri yüklemek istediğinize emin misiniz?')) {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/admin/icerik-geri-al/${kaldirmaId}`,
+          `/api/admin/icerik-geri-al/${kaldirmaId}`,
           {
             method: 'DELETE',
           }
@@ -391,7 +391,7 @@ function AdminPaneli() {
     });
     if (sebep) {
       try {
-        const response = await fetch('http://localhost:5000/api/admin/kullanici-uyar', {
+        const response = await fetch('/api/admin/kullanici-uyar', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -427,7 +427,7 @@ function AdminPaneli() {
     });
     if (sebep) {
       try {
-        const response = await fetch('http://localhost:5000/api/admin/kullanici-banla', {
+        const response = await fetch('/api/admin/kullanici-banla', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -450,7 +450,7 @@ function AdminPaneli() {
     setSeciliMesaj(mesaj);
     setCevaplar([]);
     try {
-      const response = await fetch(`http://localhost:5000/api/admin/mesajlar/${mesaj.id}`);
+      const response = await fetch(`/api/admin/mesajlar/${mesaj.id}`);
       const data = await response.json();
       if (!response.ok) throw new Error(data.message);
       setCevaplar(data);
@@ -472,7 +472,7 @@ function AdminPaneli() {
     }
     setCevapGonderiliyor(true);
     try {
-      const response = await fetch('http://localhost:5000/api/admin/mesaj-cevapla', {
+      const response = await fetch('/api/admin/mesaj-cevapla', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -526,7 +526,7 @@ function AdminPaneli() {
     }
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/api/hastalikekle', {
+      const response = await fetch('/api/hastalikekle', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(hastalikForm),
@@ -550,7 +550,7 @@ function AdminPaneli() {
     }
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/api/ilacekle', {
+      const response = await fetch('/api/ilacekle', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(ilacForm),
@@ -574,7 +574,7 @@ function AdminPaneli() {
     }
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/api/yanetkiekle', {
+      const response = await fetch('/api/yanetkiekle', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(yanEtkiForm),

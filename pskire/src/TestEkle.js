@@ -25,7 +25,7 @@ function TestEkle() {
     useEffect(() => {
         const fetchSonucTipleri = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/test-sonuclari');
+                const response = await fetch('/api/test-sonuclari');
                 if (!response.ok) throw new Error('Sonuç tipleri yüklenemedi.');
                 const data = await response.json();
                 setTumSonucTipleri(data);
@@ -131,7 +131,7 @@ function TestEkle() {
         });
 
         try {
-            const response = await fetch('http://localhost:5000/api/testekle', {
+            const response = await fetch('/api/testekle', {
                 method: 'POST',
                 body: formData
             });

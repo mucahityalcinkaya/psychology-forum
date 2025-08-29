@@ -23,7 +23,7 @@ function Iletisim() {
     useEffect(() => {
         const fetchIletisimTurleri = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/iletisim-turleri');
+                const response = await fetch('/api/iletisim-turleri');
                 const data = await response.json();
                 if (!response.ok) throw new Error('İletişim türleri yüklenemedi.');
                 setIletisimTurleri(data);
@@ -42,7 +42,7 @@ function Iletisim() {
         if (!currentUser) return;
         setMesajlarYukleniyor(true);
         try {
-            const response = await fetch(`http://localhost:5000/api/kullanici/mesajlarim/${currentUser.id}`);
+            const response = await fetch(`/api/kullanici/mesajlarim/${currentUser.id}`);
             const data = await response.json();
             if (!response.ok) throw new Error('Mesajlar yüklenemedi.');
             setGonderilenMesajlar(data);
@@ -81,7 +81,7 @@ function Iletisim() {
                 user_id: currentUser ? currentUser.id : null
             };
 
-            const response = await fetch('http://localhost:5000/api/iletisim-mesaj-gonder', {
+            const response = await fetch('/api/iletisim-mesaj-gonder', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)

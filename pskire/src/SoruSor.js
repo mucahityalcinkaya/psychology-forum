@@ -29,7 +29,7 @@ function SoruSor() {
     useEffect(() => {
         const fetchEtiketVerileri = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/sorularlistesi');
+                const response = await fetch('/api/sorularlistesi');
                 const data = await response.json();
                 setTumHastaliklar(data.tumHastaliklar || []);
                 setTumIlaclar(data.tumIlaclar || []);
@@ -134,7 +134,7 @@ function SoruSor() {
         });
 
         try {
-            const response = await fetch('http://localhost:5000/api/sorusor', {
+            const response = await fetch('/api/sorusor', {
                 method: 'POST',
                 body: formData,
             });

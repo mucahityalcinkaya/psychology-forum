@@ -31,7 +31,7 @@ function HastalikDetay() {
         const fetchHastalikDetay = async () => {
             try {
                 setLoading(true);
-                const response = await fetch(`http://localhost:5000/api/hastaliklar/${hastalikSlug}/detaylar`);
+                const response = await fetch(`/api/hastaliklar/${hastalikSlug}/detaylar`);
                 if (!response.ok) {
                     throw new Error('Veri çekilirken bir sorun oluştu.');
                 }
@@ -67,7 +67,7 @@ function HastalikDetay() {
         if (!currentUser) return;
 
         try {
-            const response = await fetch('http://localhost:5000/api/paylasimsikayet', {
+            const response = await fetch('/api/paylasimsikayet', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -97,7 +97,7 @@ function HastalikDetay() {
         if (!confirmDelete) return;
 
         try {
-            const response = await fetch(`http://localhost:5000/api/paylasimsil/${paylasimId}`, {
+            const response = await fetch(`/api/paylasimsil/${paylasimId}`, {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

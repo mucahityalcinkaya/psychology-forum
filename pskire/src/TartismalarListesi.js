@@ -38,7 +38,7 @@ function TartismalarListesi() {
     const fetchTartismalar = async () => {
         try {
             setLoading(true);
-            const response = await fetch('http://localhost:5000/api/tartismalar');
+            const response = await fetch('/api/tartismalar');
             const data = await response.json();
 
             if (!response.ok) {
@@ -65,7 +65,7 @@ function TartismalarListesi() {
         if (!currentUser || !window.confirm("Bu tartışmayı kaldırmak istediğinize emin misiniz?")) return;
 
         try {
-            const response = await fetch(`http://localhost:5000/api/tartismakaldir/${tartismaId}`, {
+            const response = await fetch(`/api/tartismakaldir/${tartismaId}`, {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ kaldiran_id: currentUser.id, kaldiran_rol:currentUser.rol})

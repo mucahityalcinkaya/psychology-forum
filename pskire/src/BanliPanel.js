@@ -30,7 +30,7 @@ function BanliPanel() {
 
         const fetchBanVerisi = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/api/banli-panel-verisi/${currentUser.id}`);
+                const response = await fetch(`/api/banli-panel-verisi/${currentUser.id}`);
                 const data = await response.json();
 
                 if (!response.ok) {
@@ -72,7 +72,7 @@ function BanliPanel() {
                 }
                 // API isteği burada yapılacak
                 try {
-                    const response = await fetch('http://localhost:5000/api/ban-itirazi', {
+                    const response = await fetch('/api/ban-itirazi', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ 

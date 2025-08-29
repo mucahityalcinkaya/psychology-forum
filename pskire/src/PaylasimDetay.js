@@ -52,7 +52,7 @@ function PaylasimDetay() {
         if (!confirmDelete) return;
 
         try {
-            const response = await fetch(`http://localhost:5000/api/paylasimsil/${paylasimVerisi.paylasim.id}`, {
+            const response = await fetch(`/api/paylasimsil/${paylasimVerisi.paylasim.id}`, {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -76,7 +76,7 @@ function PaylasimDetay() {
     useEffect(() => {
         const fetchPaylasimDetay = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/api/paylasimdetay/${paylasimId}`);
+                const response = await fetch(`/api/paylasimdetay/${paylasimId}`);
                 const data = await response.json();
 
                 if (!response.ok) {

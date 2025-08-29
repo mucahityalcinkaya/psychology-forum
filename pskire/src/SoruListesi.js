@@ -99,7 +99,7 @@ function SoruListesi() {
             if (secilenIlac) params.append('secilenIlac', secilenIlac);
 
             try {
-                const response = await fetch(`http://localhost:5000/api/sorularlistesi?${params.toString()}`);
+                const response = await fetch(`/api/sorularlistesi?${params.toString()}`);
                 const text = await response.text();
                 try {
                     const data = JSON.parse(text);

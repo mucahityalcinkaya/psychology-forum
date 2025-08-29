@@ -26,7 +26,7 @@ function Register() {
 
     const handleGoogleSuccess = async (tokenResponse) => {
         try {
-            const response = await fetch('http://localhost:5000/api/google-register-check', {
+            const response = await fetch('/api/google-register-check', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ accessToken: tokenResponse.access_token }),
@@ -60,7 +60,7 @@ function Register() {
     const handleRegister = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:5000/api/kayitol', {
+            const response = await fetch('/api/kayitol', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),

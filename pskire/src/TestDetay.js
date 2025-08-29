@@ -24,17 +24,17 @@ function TestDetay() { // function içerisine global parametrelerimizi tanımlı
         setLoading(true); //yükleniyoru true yaptık
         
         try {
-            const testResponse = await fetch(`http://localhost:5000/api/testler/${testId}`); //testin idsini gönderiyoruz bu sayede  o testle alakaı bilgiler gelecek bize 
+            const testResponse = await fetch(`/api/testler/${testId}`); //testin idsini gönderiyoruz bu sayede  o testle alakaı bilgiler gelecek bize 
             const testData = await testResponse.json(); //gelen responsu json formatına çevirdik
             setTest(testData); // ve Test i güncelledik
             
-            const sorularResponse = await fetch(`http://localhost:5000/api/testsorular/${testId}`); // test idsini gönderip o test idsinin şit olduğu soruları alıyoruz 
+            const sorularResponse = await fetch(`/api/testsorular/${testId}`); // test idsini gönderip o test idsinin şit olduğu soruları alıyoruz 
             const sorularData = await sorularResponse.json(); //gelen responsu json formatına çevirdik
             
             const sorularVeCevaplar = []; // her sorunun kendi içinde cevabı olduğu için her soru ile cevabını birleştireceğiz.
             
             for (const soru of sorularData) { // for döngüsü açacağız soruları tek tek alıyoruz
-                const cevaplarResponse = await fetch(`http://localhost:5000/api/cevaplar/${soru.id}`); // o sorunun idsine sahip olan cevapları alıyoruz
+                const cevaplarResponse = await fetch(`/api/cevaplar/${soru.id}`); // o sorunun idsine sahip olan cevapları alıyoruz
                 const cevaplarData = await cevaplarResponse.json(); //json ile çeviriyoruz
                 
                 sorularVeCevaplar.push({ //oluşturduğumuz diziye ekliyoruz
@@ -44,7 +44,7 @@ function TestDetay() { // function içerisine global parametrelerimizi tanımlı
             }
             setSorular(sorularVeCevaplar); // En son sorular değişkenine aktarıyoruz.
             
-            const sonuclarResponse = await fetch(`http://localhost:5000/api/sonuclar/${testId}`); // o test idsine göre sonucları alıyoruz
+            const sonuclarResponse = await fetch(`/api/sonuclar/${testId}`); // o test idsine göre sonucları alıyoruz
             const sonuclarData = await sonuclarResponse.json(); // jsona çeviriyoruz
             setSonuclar(sonuclarData); // Sonuclar değişkenine atıyoruz
             

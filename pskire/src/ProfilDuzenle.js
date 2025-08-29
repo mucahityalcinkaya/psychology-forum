@@ -48,7 +48,7 @@ function ProfilDuzenle() {
     setSuccess('');
 
     try {
-      const response = await fetch(`http://localhost:5000/api/kullanicilar/${currentUser.id}/profil`, {
+      const response = await fetch(`/api/kullanicilar/${currentUser.id}/profil`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

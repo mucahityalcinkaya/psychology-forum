@@ -39,14 +39,14 @@ export function AuthProvider({ children }) {
 
             try {
                 // Fetch isteğinde düzeltilmiş userId'yi kullanıyoruz.
-                const response = await fetch(`http://localhost:5000/api/kullanici/yeni-uyarilar?userId=${userId}`);
+                const response = await fetch(`/api/kullanici/yeni-uyarilar?userId=${userId}`);
                 const yeniUyarilar = await response.json();
                 
                 // ... (Geri kalan kod aynı)
                 
                 // Görüntülenen uyarıları "okundu" olarak işaretle
                 const goruntulenenUyariIds = yeniUyarilar.map(uyari => uyari.id);
-                await fetch('http://localhost:5000/api/kullanici/uyarilari-okundu', {
+                await fetch('/api/kullanici/uyarilari-okundu', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ 
@@ -64,11 +64,11 @@ export function AuthProvider({ children }) {
 
     const login = async (credentials) => {
         try {
-            let endpoint = 'http://localhost:5000/api/login';
+            let endpoint = '/api/login';
             let body = {};
 
             if (credentials.googleToken) {
-                endpoint = 'http://localhost:5000/api/login/google';
+                endpoint = '/api/login/google';
                 body = { token: credentials.googleToken };
             } else {
                 body = { email: credentials.email, password: credentials.password };

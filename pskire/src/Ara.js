@@ -24,7 +24,7 @@ function Ara() {
         setHata(null);
 
         try {
-          const response = await fetch(`http://localhost:5000/api/kullaniciara?q=${encodeURIComponent(aramaTerimi)}`);
+          const response = await fetch(`/api/kullaniciara?q=${encodeURIComponent(aramaTerimi)}`);
           const data = await response.json();
 
           if (!response.ok) {

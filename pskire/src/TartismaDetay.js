@@ -66,7 +66,7 @@ function TartismaDetay() {
     const fetchData = useCallback(async () => {
         try {
             setLoading(true);
-            const response = await fetch(`http://localhost:5000/api/tartismalar/${tartismaId}`);
+            const response = await fetch(`/api/tartismalar/${tartismaId}`);
             const data = await response.json();
 
             if (!response.ok) {
@@ -96,7 +96,7 @@ function TartismaDetay() {
         
         setYorumGonderiliyor(true);
         try {
-            const response = await fetch('http://localhost:5000/api/tartismayorum', {
+            const response = await fetch('/api/tartismayorum', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -125,7 +125,7 @@ function TartismaDetay() {
     const handleYorumKaldir = async (yorumId) => {
         if (!currentUser) return;
         try {
-            const response = await fetch(`http://localhost:5000/api/tartismayorumkaldir/${yorumId}`, {
+            const response = await fetch(`/api/tartismayorumkaldir/${yorumId}`, {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ kaldiran_id: currentUser.id,kaldiran_rol:currentUser.rol })
@@ -144,7 +144,7 @@ function TartismaDetay() {
     const handleYorumSikayet = async (yorumId) => {
         if(!currentUser) return;
         try {
-            const response = await fetch('http://localhost:5000/api/tartismayorumsikayet', {
+            const response = await fetch('/api/tartismayorumsikayet', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ yorum_id: yorumId })
@@ -179,7 +179,7 @@ function TartismaDetay() {
 
         if (result.isConfirmed) {
             try {
-                const response = await fetch(`http://localhost:5000/api/tartismakaldir/${tartisma.id}`, {
+                const response = await fetch(`/api/tartismakaldir/${tartisma.id}`, {
                     method: 'DELETE',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ kaldiran_id: currentUser.id,kaldiran_rol:currentUser.rol })
@@ -197,7 +197,7 @@ function TartismaDetay() {
     const handleTartismaSikayet = async () => {
         if (!tartisma || !currentUser) return;
         try {
-            const response = await fetch('http://localhost:5000/api/tartismasikayet', {
+            const response = await fetch('/api/tartismasikayet', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ tartisma_id: tartisma.id })

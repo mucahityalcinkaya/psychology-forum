@@ -16,7 +16,7 @@ function Layout() {
 
 
 useEffect(() => {        
-        fetch('http://localhost:5000/api/hastaliklar')
+        fetch('/api/hastaliklar')
             .then(response => response.json()) // Response'un body'sindeki JSON'u JavaScript objesine çevir
             .then(data => {
                 sethastaliklar(data); // Gelen veriyi hastalıklar state'ine kaydet

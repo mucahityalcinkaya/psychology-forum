@@ -38,12 +38,12 @@ function TakipListesi() {
     
     try {
       // Önce tüm kullanıcıları çek
-      const kullanicilarRes = await fetch(`http://localhost:5000/api/kullanicilar/${profilId}`);
+      const kullanicilarRes = await fetch(`/api/kullanicilar/${profilId}`);
       const kullanicilar = await kullanicilarRes.json();
       setListOwner(kullanicilar);
       
       // Takip ilişkilerini çek
-      const takipRes = await fetch(`http://localhost:5000/api/takipler/${profilId}`);
+      const takipRes = await fetch(`/api/takipler/${profilId}`);
       const {takipler,takipciler} = await takipRes.json();
       setTakipciler(takipciler);
       setTakipEdilenler(takipler);
@@ -60,7 +60,7 @@ function TakipListesi() {
     if (!currentUser) return;
     
     try {
-      const response = await fetch('http://localhost:5000/api/takibi-birak', {
+      const response = await fetch('/api/takibi-birak', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -89,7 +89,7 @@ function TakipListesi() {
     if (!currentUser) return;
     
     try {
-      const response = await fetch('http://localhost:5000/api/takipci-cikar', {
+      const response = await fetch('/api/takipci-cikar', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

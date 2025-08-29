@@ -31,7 +31,7 @@ function TartismaEkle() {
         setIsSubmitting(true);
         try {
             // API endpoint'ine POST isteği atıyoruz.
-            const response = await fetch('http://localhost:5000/api/tartismaekle', {
+            const response = await fetch('/api/tartismaekle', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 // API'nin tam olarak beklediği 'title', 'content' ve 'user_id' alanlarını gönderiyoruz.

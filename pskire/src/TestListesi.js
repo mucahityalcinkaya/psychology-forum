@@ -19,7 +19,7 @@ function TestListesi() {
     // ============================================
     useEffect(() => {
         setLoading(true);
-        fetch('http://localhost:5000/api/testler')
+        fetch('/api/testler')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Veri alınırken bir sorun oluştu.');

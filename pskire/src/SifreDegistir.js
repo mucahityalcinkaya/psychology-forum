@@ -39,7 +39,7 @@ function SifreDegistir() {
 
     try {
       // 2. Backend'e istek atıyoruz.
-      const response = await fetch(`http://localhost:5000/api/kullanicilar/${currentUser.id}/sifre-degistir`, { // hangi kişinin gönderdiğinin bilinmesi için gereklidir
+      const response = await fetch(`/api/kullanicilar/${currentUser.id}/sifre-degistir`, { // hangi kişinin gönderdiğinin bilinmesi için gereklidir
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

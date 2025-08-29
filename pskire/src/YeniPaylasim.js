@@ -53,7 +53,7 @@ function YeniPaylasim() {
         const fetchInitialData = async () => {
             try {
                 // Backend'deki API endpoint'ine (veri adresine) bir GET isteği gönderiyoruz. URL'ye o anki hastalığın slug'ını ekliyoruz.
-                const response = await fetch(`http://localhost:5000/api/yeni-paylasim-veri/${hastalikSlug}`);
+                const response = await fetch(`/api/yeni-paylasim-veri/${hastalikSlug}`);
                 // Eğer sunucudan gelen cevap "başarılı" değilse (örn: 404 sayfa bulunamadı hatası), bir hata fırlatıyoruz.
                 if (!response.ok) {
                     throw new Error('Veri çekilemedi.');
@@ -202,7 +202,7 @@ function YeniPaylasim() {
 
         try {
             // `fetch` ile backend'deki API endpoint'ine bir POST isteği atıyoruz.
-            const response = await fetch('http://localhost:5000/api/paylasimkaydet', {
+            const response = await fetch('/api/paylasimkaydet', {
                 method: 'POST', // İstek metodunu belirtiyoruz.
                 // ÖNEMLİ: Dosya yüklerken `Content-Type` başlığını manuel olarak **belirtmeyin**. Tarayıcı `FormData` için bunu otomatik olarak doğru şekilde ayarlar.
                 body: formData // FormData objesini isteğin gövdesine ekliyoruz.
