@@ -136,7 +136,8 @@ function SoruListesi() {
                     <h1 className="sayfa-baslik mb-0"><i className="bi bi-chat-quote me-3"></i>Topluluk Soruları</h1>
                     <p className="text-muted mt-2 mb-0"><i className="bi bi-people-fill me-2"></i>{gosterilecekSorular.length} soru bulundu</p>
                 </div>
-                <Link to="/soru-sor" className="btn yeni-soru-btn"><i className="bi bi-plus-circle-fill me-2"></i>Yeni Soru Sor</Link>
+                {currentUser &&(
+                <Link to="/soru-sor" className="btn yeni-soru-btn"><i className="bi bi-plus-circle-fill me-2"></i>Yeni Soru Sor</Link>)}
             </div>
 
             <div className="card filtre-karti">

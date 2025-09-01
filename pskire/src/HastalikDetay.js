@@ -208,7 +208,8 @@ function HastalikDetay() {
                         <Link to="/" className="btn geri-butonu me-3"><i className="bi bi-arrow-left"></i> Geri</Link>
                         <h1 className="h2 mb-0 sayfa-baslik">{secilenHastalik.illness_name} İçin Deneyimler</h1>
                     </div>
-                    <Link to={`/paylasim-yap/${hastalikSlug}`} className="btn paylasim-yap-btn"><i className="bi bi-plus-lg me-2"></i> Paylaşım Yap</Link>
+                     {currentUser &&
+                    <Link to={`/paylasim-yap/${hastalikSlug}`} className="btn paylasim-yap-btn"><i className="bi bi-plus-lg me-2"></i> Paylaşım Yap</Link> }
                 </div>
 
                 <div className="card filtre-karti mb-4">
