@@ -36,7 +36,7 @@ function SoruDetay() {
         }
 
         try {
-            const response = await fetch(`http://localhost:5000/api/sorudetay/${numericSoruId}`);
+            const response = await fetch(`/api/sorudetay/${numericSoruId}`);
             
             const contentType = response.headers.get("content-type");
             if (!contentType || !contentType.includes("application/json")) {
@@ -94,7 +94,7 @@ function SoruDetay() {
         if (!soru || !currentUser) return;
         
         try {
-            const response = await fetch('http://localhost:5000/api/sorusikayet', {
+            const response = await fetch('/api/sorusikayet', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -120,7 +120,7 @@ function SoruDetay() {
         if (!confirmDelete) return;
 
         try {
-            const response = await fetch(`http://localhost:5000/api/sorusil/${soru.id}`, {
+            const response = await fetch(`/api/sorusil/${soru.id}`, {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -148,7 +148,7 @@ function SoruDetay() {
         setYorumGonderiliyor(true);
         
         try {
-            const response = await fetch('http://localhost:5000/api/yorumekle', {
+            const response = await fetch('/api/yorumekle', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -202,7 +202,7 @@ function SoruDetay() {
         if (!currentUser) return;
         
         try {
-            const response = await fetch(`http://localhost:5000/api/yorumsil/${yorumId}`, {
+            const response = await fetch(`/api/yorumsil/${yorumId}`, {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -227,7 +227,7 @@ function SoruDetay() {
         if (!currentUser) return;
         
         try {
-            const response = await fetch('http://localhost:5000/api/yorumsikayet', {
+            const response = await fetch('/api/yorumsikayet', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

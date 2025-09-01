@@ -42,9 +42,9 @@ function KullaniciProfil() {
                     takipSayilariRes, 
                     icerikCevabi
                 ] = await Promise.all([
-                    fetch(`http://localhost:5000/api/kullanicilar/${profilId}`),
-                    fetch(`http://localhost:5000/api/kullanicilar/${profilId}/takip-sayilari`),
-                    fetch(`http://localhost:5000/api/kullanicipves/${currentUser ? currentUser.id : 0}/${profilId}`)
+                    fetch(`/api/kullanicilar/${profilId}`),
+                    fetch(`/api/kullanicilar/${profilId}/takip-sayilari`),
+                    fetch(`/api/kullanicipves/${currentUser ? currentUser.id : 0}/${profilId}`)
                 ]);
 
                 if (!profilKullaniciRes.ok) throw new Error(`Profil bilgisi API isteği başarısız: ${profilKullaniciRes.status}`);
@@ -67,8 +67,8 @@ function KullaniciProfil() {
                 if (currentUser) {
                     try {
                         const [isFollowingRes, rollerRes] = await Promise.all([
-                            fetch(`http://localhost:5000/api/takipediyormu/${profilId}/${parseInt(currentUser.id)}`),
-                            fetch(`http://localhost:5000/api/roller`)
+                            fetch(`/api/takipediyormu/${profilId}/${parseInt(currentUser.id)}`),
+                            fetch(`/api/roller`)
                         ]);
                         
                         if (isFollowingRes.ok) {
@@ -117,7 +117,7 @@ function KullaniciProfil() {
         const profilId = parseInt(userId);
         if (!currentUser) return;
         try {
-            const response = await fetch('http://localhost:5000/api/takibi-birak', {
+            const response = await fetch('/api/takibi-birak', {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ takipEden_id: currentUser.id, takipEdilen_id: profilId })
@@ -140,7 +140,7 @@ function KullaniciProfil() {
         const profilId = parseInt(userId);
         if (!currentUser) return;
         try {
-            const response = await fetch('http://localhost:5000/api/takip-et', {
+            const response = await fetch('/api/takip-et', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ takipEden_id: currentUser.id, takipEdilen_id: profilId })
@@ -163,7 +163,7 @@ function KullaniciProfil() {
         const profilId = parseInt(profilKullanici.id);
         if (!currentUser || !yeniRolId) return;
         try {
-            const response = await fetch('http://localhost:5000/api/yetkiver', {
+            const response = await fetch('/api/yetkiver', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ profilId: profilId, rolId: yeniRolId })
@@ -185,7 +185,7 @@ function KullaniciProfil() {
         const profilId = parseInt(profilKullanici.id);
         if (!currentUser) return;
         try {
-            const response = await fetch('http://localhost:5000/api/yetkial', {
+            const response = await fetch('/api/yetkial', {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ profilId: profilId})
@@ -211,7 +211,7 @@ function KullaniciProfil() {
         }
 
         try {
-            const response = await fetch('http://localhost:5000/api/admin/kullanici-uyar', {
+            const response = await fetch('/api/admin/kullanici-uyar', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 
@@ -247,7 +247,7 @@ function KullaniciProfil() {
         if (!confirmBan) return;
 
         try {
-            const response = await fetch('http://localhost:5000/api/admin/kullanici-banla', {
+            const response = await fetch('/api/admin/kullanici-banla', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

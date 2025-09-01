@@ -20,7 +20,7 @@ function Main() {
     try {
       setLoading(true);
       
-      const response = await fetch(`http://localhost:5000/api/main/${currentUser.id}`);
+      const response = await fetch(`/api/main/${currentUser.id}`);
       
       if (!response.ok) {
         throw new Error('Veri alınamadı');
@@ -28,7 +28,7 @@ function Main() {
       
       const data = await response.json();
       
-      const takipResponse = await fetch(`http://localhost:5000/api/kullanicilar/${currentUser.id}/takip-sayilari`);
+      const takipResponse = await fetch(`/api/kullanicilar/${currentUser.id}/takip-sayilari`);
       const takipData = await takipResponse.json();
       
       setFeedData({
