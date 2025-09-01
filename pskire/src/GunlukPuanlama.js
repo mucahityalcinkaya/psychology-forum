@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useAuth } from './context/AuthContext'; 
 import './css/Gunluk.css';
+import { Link } from 'react-router-dom';
 import { useTarihNavigasyon } from './hooks/useTarihNavigasyon';
 import {
   Chart as ChartJS,
@@ -280,7 +281,36 @@ function GunlukPuanlama() {
         setSeciliGiris(null);
     };
 
-    if (!currentUser) return <div className="text-center my-5"><h3>Bu özelliği kullanmak için giriş yapmalısınız.</h3></div>;
+    if (!currentUser) {
+        return (
+            <div className="container my-5">
+                <div className="row justify-content-center">
+                    <div className="col-lg-8">
+                        <div className="card border-0 shadow-lg welcome-card">
+                            <div className="card-body p-5 text-center">
+                                <div className="mb-4">
+                                    <i className="bi bi-heart-pulse-fill text-primary" style={{ fontSize: '4rem' }}></i>
+                                </div>
+                                <h1 className="display-5 fw-bold mb-3">Psikoblog'a Hoş Geldiniz</h1>
+                                <p className="lead text-muted mb-4">
+                                    Binlerce kullanıcının deneyimlerini keşfedin, kendi hikayenizi paylaşın ve 
+                                    destekleyici bir toplulukla bağlantı kurun.
+                                </p>
+                                <div className="d-flex gap-3 justify-content-center">
+                                    <Link to="/login" className="btn btn-primary btn-lg px-5 py-3 rounded-pill shadow-sm">
+                                        <i className="bi bi-box-arrow-in-right me-2"></i>Giriş Yap
+                                    </Link>
+                                    <Link to="/register" className="btn btn-outline-primary btn-lg px-5 py-3 rounded-pill">
+                                        <i className="bi bi-person-plus me-2"></i>Kayıt Ol
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
     if (loading) return <div className="text-center my-5"><h3>Veriler Yükleniyor...</h3></div>;
     if (error) return <div className="alert alert-danger text-center my-5">Hata: {error}</div>;
 

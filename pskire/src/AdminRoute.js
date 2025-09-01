@@ -9,7 +9,7 @@ function AdminRoute() {
   // Kullanıcı giriş yapmamışsa veya rolü admin/moderator değilse anasayfaya yönlendir.
   const isAuthorized = currentUser && (currentUser.rol === 'admin' || currentUser.rol === 'moderator');
 
-  return isAuthorized ? <Outlet /> : <Navigate to="/main" />;
+  return isAuthorized ? <Outlet /> : <Navigate to="/" />;
 }
 
 export default AdminRoute;

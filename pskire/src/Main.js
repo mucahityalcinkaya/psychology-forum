@@ -20,7 +20,7 @@ function Main() {
     try {
       setLoading(true);
       
-      const response = await fetch(`/api/main/${currentUser.id}`);
+      const response = await fetch(`http://localhost:5000/api/main/${currentUser.id}`);
       
       if (!response.ok) {
         throw new Error('Veri alınamadı');
@@ -28,7 +28,7 @@ function Main() {
       
       const data = await response.json();
       
-      const takipResponse = await fetch(`/api/kullanicilar/${currentUser.id}/takip-sayilari`);
+      const takipResponse = await fetch(`http://localhost:5000/api/kullanicilar/${currentUser.id}/takip-sayilari`);
       const takipData = await takipResponse.json();
       
       setFeedData({
@@ -127,25 +127,9 @@ function Main() {
                   <Link to="/login" className="btn btn-primary btn-lg px-5 py-3 rounded-pill shadow-sm">
                     <i className="bi bi-box-arrow-in-right me-2"></i>Giriş Yap
                   </Link>
-                  <Link to="/" className="btn btn-outline-primary btn-lg px-5 py-3 rounded-pill">
+                  <Link to="/register" className="btn btn-outline-primary btn-lg px-5 py-3 rounded-pill">
                     <i className="bi bi-person-plus me-2"></i>Kayıt Ol
                   </Link>
-                </div>
-                <div className="welcome-stats mt-5">
-                  <div className="row text-center">
-                    <div className="col-4">
-                      <h3 className="text-primary mb-0">10K+</h3>
-                      <small className="text-muted">Kullanıcı</small>
-                    </div>
-                    <div className="col-4">
-                      <h3 className="text-primary mb-0">50K+</h3>
-                      <small className="text-muted">Paylaşım</small>
-                    </div>
-                    <div className="col-4">
-                      <h3 className="text-primary mb-0">100K+</h3>
-                      <small className="text-muted">Etkileşim</small>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>

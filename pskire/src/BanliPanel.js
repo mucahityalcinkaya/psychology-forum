@@ -24,7 +24,7 @@ function BanliPanel() {
 
     useEffect(() => {
         if (!currentUser || !currentUser.isBanned) {
-            navigate('/main');
+            navigate('/');
             return;
         }
 

@@ -66,7 +66,7 @@ function TartismaDetay() {
     const fetchData = useCallback(async () => {
         try {
             setLoading(true);
-            const response = await fetch(`/api/tartismalar/${tartismaId}`);
+            const response = await fetch(`http://localhost:5000/api/tartismalar/${tartismaId}`);
             const data = await response.json();
 
             if (!response.ok) {
@@ -96,7 +96,7 @@ function TartismaDetay() {
         
         setYorumGonderiliyor(true);
         try {
-            const response = await fetch('/api/tartismayorum', {
+            const response = await fetch('http://localhost:5000/api/tartismayorum', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -125,7 +125,7 @@ function TartismaDetay() {
     const handleYorumKaldir = async (yorumId) => {
         if (!currentUser) return;
         try {
-            const response = await fetch(`/api/tartismayorumkaldir/${yorumId}`, {
+            const response = await fetch(`http://localhost:5000/api/tartismayorumkaldir/${yorumId}`, {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ kaldiran_id: currentUser.id,kaldiran_rol:currentUser.rol })
@@ -144,7 +144,7 @@ function TartismaDetay() {
     const handleYorumSikayet = async (yorumId) => {
         if(!currentUser) return;
         try {
-            const response = await fetch('/api/tartismayorumsikayet', {
+            const response = await fetch('http://localhost:5000/api/tartismayorumsikayet', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ yorum_id: yorumId })
@@ -179,7 +179,7 @@ function TartismaDetay() {
 
         if (result.isConfirmed) {
             try {
-                const response = await fetch(`/api/tartismakaldir/${tartisma.id}`, {
+                const response = await fetch(`http://localhost:5000/api/tartismakaldir/${tartisma.id}`, {
                     method: 'DELETE',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ kaldiran_id: currentUser.id,kaldiran_rol:currentUser.rol })
@@ -197,7 +197,7 @@ function TartismaDetay() {
     const handleTartismaSikayet = async () => {
         if (!tartisma || !currentUser) return;
         try {
-            const response = await fetch('/api/tartismasikayet', {
+            const response = await fetch('http://localhost:5000/api/tartismasikayet', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ tartisma_id: tartisma.id })
@@ -253,16 +253,40 @@ function TartismaDetay() {
                             </div>
                         </div>
                     )}
-                    {currentUser && (
+                    {currentUser ? (
+                        // Kullanıcı giriş yapmışsa yorum formunu göster
                         <div className="card mb-5">
                             <div className="card-body">
                                 <h5 className="card-title">Yoruma Katıl</h5>
                                 <form onSubmit={(e) => handleSubmit(e, yeniYorum, `t${tartismaId}`, () => setYeniYorum(''))}>
-                                    <textarea className="form-control" rows="3" value={yeniYorum} onChange={(e) => setYeniYorum(e.target.value)} placeholder="Fikrini belirt..."></textarea>
-                                    <button type="submit" className="btn btn-primary mt-2" disabled={!yeniYorum.trim() || yorumGonderiliyor}>
+                                    <textarea
+                                        className="form-control"
+                                        rows="3"
+                                        value={yeniYorum}
+                                        onChange={(e) => setYeniYorum(e.target.value)}
+                                        placeholder="Fikrini belirt..."
+                                        disabled={yorumGonderiliyor}
+                                    ></textarea>
+                                    <button
+                                        type="submit"
+                                        className="btn btn-primary mt-2"
+                                        disabled={!yeniYorum.trim() || yorumGonderiliyor}
+                                    >
                                         {yorumGonderiliyor ? 'Gönderiliyor...' : 'Gönder'}
                                     </button>
                                 </form>
+                            </div>
+                        </div>
+                    ) : (
+                        // Kullanıcı giriş yapmamışsa yönlendirme mesajını göster
+                        <div className="card comment-form-card text-center mb-5">
+                            <div className="card-body">
+                                <i className="bi bi-person-fill-lock text-muted mb-3" style={{ fontSize: '2rem' }}></i>
+                                <h5 className="comment-form-title text-muted">Yorum Yapmak İçin Giriş Yapın</h5>
+                                <p className="text-muted">Bu tartışmaya yorum yapmak ve düşüncelerinizi paylaşmak için lütfen giriş yapın.</p>
+                                <Link to="/login" className="btn btn-primary mt-2">
+                                    <i className="bi bi-box-arrow-in-right me-2"></i> Giriş Yap
+                                </Link>
                             </div>
                         </div>
                     )}

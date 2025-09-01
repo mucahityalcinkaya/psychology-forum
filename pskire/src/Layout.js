@@ -16,7 +16,7 @@ function Layout() {
 
 
 useEffect(() => {        
-        fetch('/api/hastaliklar')
+        fetch('http://localhost:5000/api/hastaliklar')
             .then(response => response.json()) // Response'un body'sindeki JSON'u JavaScript objesine çevir
             .then(data => {
                 sethastaliklar(data); // Gelen veriyi hastalıklar state'ine kaydet
@@ -50,7 +50,7 @@ useEffect(() => {
         <ul className="nav flex-column p-3">
           {/* Ana Sayfa Linki */}
           <li className="nav-item mb-2">
-            <Link className="nav-link text-white" to="/main">
+            <Link className="nav-link text-white" to="/">
               <i className="bi-house-door-fill me-2"></i> Ana Sayfa
             </Link>
           </li>

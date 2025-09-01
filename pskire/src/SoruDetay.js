@@ -36,7 +36,7 @@ function SoruDetay() {
         }
 
         try {
-            const response = await fetch(`/api/sorudetay/${numericSoruId}`);
+            const response = await fetch(`http://localhost:5000/api/sorudetay/${numericSoruId}`);
             
             const contentType = response.headers.get("content-type");
             if (!contentType || !contentType.includes("application/json")) {
@@ -94,7 +94,7 @@ function SoruDetay() {
         if (!soru || !currentUser) return;
         
         try {
-            const response = await fetch('/api/sorusikayet', {
+            const response = await fetch('http://localhost:5000/api/sorusikayet', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -120,7 +120,7 @@ function SoruDetay() {
         if (!confirmDelete) return;
 
         try {
-            const response = await fetch(`/api/sorusil/${soru.id}`, {
+            const response = await fetch(`http://localhost:5000/api/sorusil/${soru.id}`, {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -148,7 +148,7 @@ function SoruDetay() {
         setYorumGonderiliyor(true);
         
         try {
-            const response = await fetch('/api/yorumekle', {
+            const response = await fetch('http://localhost:5000/api/yorumekle', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -202,7 +202,7 @@ function SoruDetay() {
         if (!currentUser) return;
         
         try {
-            const response = await fetch(`/api/yorumsil/${yorumId}`, {
+            const response = await fetch(`http://localhost:5000/api/yorumsil/${yorumId}`, {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -227,7 +227,7 @@ function SoruDetay() {
         if (!currentUser) return;
         
         try {
-            const response = await fetch('/api/yorumsikayet', {
+            const response = await fetch('http://localhost:5000/api/yorumsikayet', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -422,34 +422,47 @@ function SoruDetay() {
                             </div>
                         </div>
                         
-                        {currentUser && (
-                            <div className="card comment-form-card">
-                                <div className="card-body">
-                                    <h5 className="comment-form-title">
-                                        <i className="bi bi-chat-dots-fill"></i>
-                                        Yoruma Katıl
-                                    </h5>
-                                    <form onSubmit={(e) => handleSubmit(e, yeniYorum, `q${soru.id}`, () => setYeniYorum(''))}>
-                                        <textarea 
-                                            className="form-control comment-textarea" 
-                                            rows="3" 
-                                            value={yeniYorum} 
-                                            onChange={(e) => setYeniYorum(e.target.value)} 
-                                            placeholder="Düşüncelerini paylaş, topluluğa katkıda bulun..."
-                                            disabled={yorumGonderiliyor}
-                                        />
-                                        <button 
-                                            type="submit" 
-                                            className="btn comment-submit-btn" 
-                                            disabled={!yeniYorum.trim() || yorumGonderiliyor}
-                                        >
-                                            <i className="bi bi-send-fill me-2"></i>
-                                            {yorumGonderiliyor ? 'Gönderiliyor...' : 'Gönder'}
-                                        </button>
-                                    </form>
-                                </div>
+                        {currentUser ? (
+                        // Kullanıcı giriş yapmışsa yorum formunu göster
+                        <div className="card comment-form-card">
+                            <div className="card-body">
+                                <h5 className="comment-form-title">
+                                    <i className="bi bi-chat-dots-fill"></i>
+                                    Yoruma Katıl
+                                </h5>
+                                <form onSubmit={(e) => handleSubmit(e, yeniYorum, `q${soru.id}`, () => setYeniYorum(''))}>
+                                    <textarea 
+                                        className="form-control comment-textarea" 
+                                        rows="3" 
+                                        value={yeniYorum} 
+                                        onChange={(e) => setYeniYorum(e.target.value)} 
+                                        placeholder="Düşüncelerini paylaş, topluluğa katkıda bulun..."
+                                        disabled={yorumGonderiliyor}
+                                    />
+                                    <button 
+                                        type="submit" 
+                                        className="btn comment-submit-btn" 
+                                        disabled={!yeniYorum.trim() || yorumGonderiliyor}
+                                    >
+                                        <i className="bi bi-send-fill me-2"></i>
+                                        {yorumGonderiliyor ? 'Gönderiliyor...' : 'Gönder'}
+                                    </button>
+                                </form>
                             </div>
-                        )}
+                        </div>
+                    ) : (
+                        // Kullanıcı giriş yapmamışsa yönlendirme mesajını göster
+                        <div className="card comment-form-card text-center">
+                            <div className="card-body">
+                                <i className="bi bi-person-fill-lock text-muted mb-3" style={{ fontSize: '2rem' }}></i>
+                                <h5 className="comment-form-title text-muted">Yorum Yapmak İçin Giriş Yapın</h5>
+                                <p className="text-muted">Bu paylaşıma yorum yapmak ve tartışmalara katılmak için lütfen giriş yapın.</p>
+                                <Link to="/login" className="btn btn-primary mt-2">
+                                    <i className="bi bi-box-arrow-in-right me-2"></i> Giriş Yap
+                                </Link>
+                            </div>
+                        </div>
+                    )}
                         
                         <h3 className="comments-section-title">Yorumlar</h3>
                         

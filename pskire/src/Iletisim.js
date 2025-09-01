@@ -1,5 +1,7 @@
+
 import React, { useState, useEffect } from 'react';
 import { useAuth } from './context/AuthContext';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import './css/iletisim.css';
 
@@ -22,8 +24,12 @@ function Iletisim() {
     // Component yüklendiğinde iletişim türlerini API'den çeker
     useEffect(() => {
         const fetchIletisimTurleri = async () => {
+            if (!currentUser) { // Sadece giriş yapmış kullanıcılar için iletişim türlerini yükle
+                setLoading(false);
+                return;
+            }
             try {
-                const response = await fetch('/api/iletisim-turleri');
+                const response = await fetch('http://localhost:5000/api/iletisim-turleri');
                 const data = await response.json();
                 if (!response.ok) throw new Error('İletişim türleri yüklenemedi.');
                 setIletisimTurleri(data);
@@ -35,14 +41,45 @@ function Iletisim() {
             }
         };
         fetchIletisimTurleri();
-    }, []);
+    }, [currentUser]); // currentUser değiştiğinde tekrar çalışır
 
+    // Eğer kullanıcı giriş yapmadıysa, hoş geldin sayfasını göster
+    if (!currentUser) {
+        return (
+            <div className="container my-5">
+                <div className="row justify-content-center">
+                    <div className="col-lg-8">
+                        <div className="card border-0 shadow-lg welcome-card">
+                            <div className="card-body p-5 text-center">
+                                <div className="mb-4">
+                                    <i className="bi bi-heart-pulse-fill text-primary" style={{ fontSize: '4rem' }}></i>
+                                </div>
+                                <h1 className="display-5 fw-bold mb-3">Psikoblog'a Hoş Geldiniz</h1>
+                                <p className="lead text-muted mb-4">
+                                    Binlerce kullanıcının deneyimlerini keşfedin, kendi hikayenizi paylaşın ve 
+                                    destekleyici bir toplulukla bağlantı kurun.
+                                </p>
+                                <div className="d-flex gap-3 justify-content-center">
+                                    <Link to="/login" className="btn btn-primary btn-lg px-5 py-3 rounded-pill shadow-sm">
+                                        <i className="bi bi-box-arrow-in-right me-2"></i>Giriş Yap
+                                    </Link>
+                                    <Link to="/register" className="btn btn-outline-primary btn-lg px-5 py-3 rounded-pill">
+                                        <i className="bi bi-person-plus me-2"></i>Kayıt Ol
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+    
     // Kullanıcının gönderdiği mesajları çeker
     const fetchGonderilenMesajlar = async () => {
-        if (!currentUser) return;
         setMesajlarYukleniyor(true);
         try {
-            const response = await fetch(`/api/kullanici/mesajlarim/${currentUser.id}`);
+            const response = await fetch(`http://localhost:5000/api/kullanici/mesajlarim/${currentUser.id}`);
             const data = await response.json();
             if (!response.ok) throw new Error('Mesajlar yüklenemedi.');
             setGonderilenMesajlar(data);
@@ -81,7 +118,7 @@ function Iletisim() {
                 user_id: currentUser ? currentUser.id : null
             };
 
-            const response = await fetch('/api/iletisim-mesaj-gonder', {
+            const response = await fetch('http://localhost:5000/api/iletisim-mesaj-gonder', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
@@ -207,14 +244,14 @@ function Iletisim() {
                                                     <div id={`collapse-${mesaj.id}`} className="accordion-collapse collapse" data-bs-parent="#mesajlarAccordion">
                                                         <div className="accordion-body">
                                                             <strong>Mesajım:</strong>
-                                                            <p style={{whiteSpace: 'pre-wrap'}}>{mesaj.content}</p>
+                                                            <p style={{ whiteSpace: 'pre-wrap' }}>{mesaj.content}</p>
                                                             <hr/>
                                                             <strong>Gelen Cevaplar:</strong>
                                                             {mesaj.cevaplar && mesaj.cevaplar.length > 0 ? (
                                                                 mesaj.cevaplar.map(cevap => (
                                                                     <div key={cevap.id} className="alert alert-secondary mt-2">
                                                                         <strong>Yetkili ({cevap.user_name}):</strong>
-                                                                        <p className="mb-0 mt-1" style={{whiteSpace: 'pre-wrap'}}>{cevap.content}</p>
+                                                                        <p className="mb-0 mt-1" style={{ whiteSpace: 'pre-wrap' }}>{cevap.content}</p>
                                                                         <small className="d-block text-end">{new Date(cevap.cevap_tarihi).toLocaleString('tr-TR')}</small>
                                                                     </div>
                                                                 ))

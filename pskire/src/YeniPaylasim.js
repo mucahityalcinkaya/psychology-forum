@@ -71,7 +71,7 @@ function YeniPaylasim() {
                 console.error("Başlangıç verileri çekilirken hata:", error);
                 // Kullanıcıya bir uyarı gösterip, onu ana sayfaya yönlendiriyoruz.
                 alert('Hastalık bilgisi bulunamadı, ana sayfaya yönlendiriliyorsunuz.');
-                navigate('/main');
+                navigate('/');
             } finally {
                 // `try` veya `catch` bloklarından hangisi çalışırsa çalışsın, `finally` bloğu en sonunda her zaman çalışır.
                 // Yüklenme işlemini bitiriyoruz.

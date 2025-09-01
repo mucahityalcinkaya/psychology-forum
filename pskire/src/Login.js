@@ -34,7 +34,7 @@ function Login() {
                     confirmButtonText: 'Anladım'
                 });
             }
-            navigate('/main'); // Uyarı gösterildikten sonra ana sayfaya yönlendir
+            navigate('/'); // Uyarı gösterildikten sonra ana sayfaya yönlendir
         } else {
             // Başarısız giriş durumunda ban kontrolü yap
             if (result.data && result.data.banInfo) {
@@ -139,7 +139,7 @@ function Login() {
                         </div>
 
                         <div className="d-flex justify-content-between align-items-center mb-4 other-links">
-                            <Link to="/">Yeni Hesap Oluştur</Link>
+                            <Link to="/register">Yeni Hesap Oluştur</Link>
                             <Link to="/sifremiunuttum">Şİfremi Unuttum</Link>
                         </div>
 

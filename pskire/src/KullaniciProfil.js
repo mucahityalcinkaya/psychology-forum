@@ -28,55 +28,66 @@ function KullaniciProfil() {
 
     useEffect(() => {
         const tumVerileriCek = async () => {
-            if (!currentUser || !userId) return;
-            
-            setProfilKullanici(null);
-            setPaylasimlar([]);
-            setSorular([]);
-            setRoller([]);
-            
+            if (!userId) {
+                setProfilKullanici(null);
+                return;
+            }
+
             try {
                 const profilId = parseInt(userId);
-                const currentUserId = parseInt(currentUser.id);
 
-                const anaBilgiIstekleri = [
-                    fetch(`/api/kullanicilar/${profilId}`),
-                    fetch(`/api/takipediyormu/${profilId}/${currentUserId}`),
-                    fetch(`/api/kullanicilar/${profilId}/takip-sayilari`),
-                    fetch(`/api/roller`)
-                ];
-                
-                const icerikIstegi = fetch(`/api/kullanicipves/${currentUserId}/${profilId}`);
-
-                const [anaBilgiCevaplari, icerikCevabi] = await Promise.all([
-                    Promise.all(anaBilgiIstekleri),
-                    icerikIstegi
+                // Her zaman çekilmesi gereken veriler
+                const [
+                    profilKullaniciRes, 
+                    takipSayilariRes, 
+                    icerikCevabi
+                ] = await Promise.all([
+                    fetch(`http://localhost:5000/api/kullanicilar/${profilId}`),
+                    fetch(`http://localhost:5000/api/kullanicilar/${profilId}/takip-sayilari`),
+                    fetch(`http://localhost:5000/api/kullanicipves/${currentUser ? currentUser.id : 0}/${profilId}`)
                 ]);
 
-                for (const res of anaBilgiCevaplari) {
-                    if (!res.ok) throw new Error(`API isteği başarısız: ${res.status} ${res.statusText}`);
-                }
-                if (!icerikCevabi.ok) throw new Error(`İçerik API isteği başarısız: ${icerikCevabi.status} ${icerikCevabi.statusText}`);
+                if (!profilKullaniciRes.ok) throw new Error(`Profil bilgisi API isteği başarısız: ${profilKullaniciRes.status}`);
+                if (!takipSayilariRes.ok) throw new Error(`Takip sayıları API isteği başarısız: ${takipSayilariRes.status}`);
+                if (!icerikCevabi.ok) throw new Error(`İçerik API isteği başarısız: ${icerikCevabi.status}`);
 
-                const anaBilgiVerileri = await Promise.all(anaBilgiCevaplari.map(res => res.json()));
-                const icerikVerisi = await icerikCevabi.json();
-
-                const [
-                    profilKullaniciData, 
-                    isFollowingData, 
-                    takipSayilariData, 
-                    rollerData
-                ] = anaBilgiVerileri;
+                const [profilKullaniciData, takipSayilariData, icerikVerisi] = await Promise.all([
+                    profilKullaniciRes.json(),
+                    takipSayilariRes.json(),
+                    icerikCevabi.json()
+                ]);
 
                 setProfilKullanici(profilKullaniciData);
-                setIsFollowing(isFollowingData.isFollowing);
                 setTakipciSayisi(takipSayilariData.takipciSayisi);
                 setTakipEdilenSayisi(takipSayilariData.takipEdilenSayisi);
-                setRoller(rollerData || []);
-                
                 setPaylasimlar(icerikVerisi.paylasimlar || []);
                 setSorular(icerikVerisi.sorular || []);
 
+                // Sadece giriş yapmış kullanıcılar için ekstra verileri çek
+                if (currentUser) {
+                    try {
+                        const [isFollowingRes, rollerRes] = await Promise.all([
+                            fetch(`http://localhost:5000/api/takipediyormu/${profilId}/${parseInt(currentUser.id)}`),
+                            fetch(`http://localhost:5000/api/roller`)
+                        ]);
+                        
+                        if (isFollowingRes.ok) {
+                            const isFollowingData = await isFollowingRes.json();
+                            setIsFollowing(isFollowingData.isFollowing);
+                        } else {
+                            console.error("Takip durumu çekilirken hata oluştu.");
+                        }
+
+                        if (rollerRes.ok) {
+                            const rollerData = await rollerRes.json();
+                            setRoller(rollerData || []);
+                        } else {
+                            console.error("Roller çekilirken hata oluştu.");
+                        }
+                    } catch (error) {
+                        console.error("Yetki/Takip verilerini çekerken hata:", error);
+                    }
+                }
             } catch (error) {
                 console.error("Profil verilerini çekerken bir hata oluştu:", error);
                 setProfilKullanici(null);
@@ -91,6 +102,10 @@ function KullaniciProfil() {
     }
 
     const handleToggleTakip = () => {
+        if (!currentUser) {
+            alert('Bu işlemi yapmak için giriş yapmalısınız.');
+            return;
+        }
         if (isFollowing) {
             handleTakibiBirak();
         } else {
@@ -102,7 +117,7 @@ function KullaniciProfil() {
         const profilId = parseInt(userId);
         if (!currentUser) return;
         try {
-            const response = await fetch('/api/takibi-birak', {
+            const response = await fetch('http://localhost:5000/api/takibi-birak', {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ takipEden_id: currentUser.id, takipEdilen_id: profilId })
@@ -125,7 +140,7 @@ function KullaniciProfil() {
         const profilId = parseInt(userId);
         if (!currentUser) return;
         try {
-            const response = await fetch('/api/takip-et', {
+            const response = await fetch('http://localhost:5000/api/takip-et', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ takipEden_id: currentUser.id, takipEdilen_id: profilId })
@@ -148,7 +163,7 @@ function KullaniciProfil() {
         const profilId = parseInt(profilKullanici.id);
         if (!currentUser || !yeniRolId) return;
         try {
-            const response = await fetch('/api/yetkiver', {
+            const response = await fetch('http://localhost:5000/api/yetkiver', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ profilId: profilId, rolId: yeniRolId })
@@ -170,7 +185,7 @@ function KullaniciProfil() {
         const profilId = parseInt(profilKullanici.id);
         if (!currentUser) return;
         try {
-            const response = await fetch('/api/yetkial', {
+            const response = await fetch('http://localhost:5000/api/yetkial', {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ profilId: profilId})
@@ -196,7 +211,7 @@ function KullaniciProfil() {
         }
 
         try {
-            const response = await fetch('/api/admin/kullanici-uyar', {
+            const response = await fetch('http://localhost:5000/api/admin/kullanici-uyar', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 
@@ -232,7 +247,7 @@ function KullaniciProfil() {
         if (!confirmBan) return;
 
         try {
-            const response = await fetch('/api/admin/kullanici-banla', {
+            const response = await fetch('http://localhost:5000/api/admin/kullanici-banla', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

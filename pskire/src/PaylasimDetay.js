@@ -63,7 +63,7 @@ function PaylasimDetay() {
 
             if (response.ok) {
                 alert('Paylaşım başarıyla kaldırıldı!');
-                navigate(`/main`);
+                navigate(`/`);
             } else if (response.status === 403) {
                 alert('Bu Paylaşımı kaldırma yetkiniz yok.');
             }
@@ -130,7 +130,7 @@ function PaylasimDetay() {
         <div className="paylasim-detay-container">
             <div className="container">
                 <div className="d-flex align-items-center mb-4">
-                    <Link to={`/main`} className="btn geri-butonu me-2"><i className="bi bi-arrow-left"></i> Ana Menü</Link>
+                    <Link to={`/`} className="btn geri-butonu me-2"><i className="bi bi-arrow-left"></i> Ana Menü</Link>
                     <Link to={`/hastaliklar/${paylasim.hastalik_slug}`} className="btn geri-butonu">
                         <i className="bi bi-arrow-left"></i> {paylasim.hastalik_name} Deneyimleri
                     </Link>

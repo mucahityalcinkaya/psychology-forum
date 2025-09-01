@@ -43,13 +43,13 @@ function App() {
       <Router>
         <Routes>
           {/* Layout'un GÖRÜNMEYECEĞİ sayfalar */}
-          <Route path="/" element={<Register />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/banli-panel" element={<BanliPanel />} />
 
           {/* Layout'un GÖRÜNECEĞİ sayfalar */}
           <Route element={<Layout />}>
-            <Route path="/main" element={<Main />} />
+            <Route path="/" element={<Main />} />
             <Route path="/hastaliklar/:hastalikSlug" element={<HastalikDetay />} />
             <Route path="/sorular" element={<SoruListesi />} />
             <Route path="/sorular/:soruId" element={<SoruDetay />} />
